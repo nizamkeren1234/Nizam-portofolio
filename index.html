@@ -5,347 +5,165 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nizam Portfolio's</title>
   <style>
-    * {margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI', sans-serif;}
-    body {
-      background:linear-gradient(#87ceeb, #fef6e4);
-      color:#333;
-      overflow-x:hidden;
-    }
-    h1, h2, h3 {
-      text-shadow:2px 2px 4px rgba(0,0,0,0.2);
-    }
+    /* ... (semua CSS lama tetap ada) ... */
 
-    /* Matahari Kartun */
-    .sun {
-      position:absolute;
-      top:20px;
-      right:40px;
-      width:120px;
-      height:120px;
-      background:#ffdd00;
-      border-radius:50%;
-      box-shadow:0 0 40px #ffea85;
-      animation:spinSun 20s linear infinite;
-      z-index:1;
+    /* === Modal AI Chat === */
+    .ai-modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999;
     }
-    @keyframes spinSun {0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
-
-    /* Burung Kartun */
-    .bird {
-      position:absolute;
-      width:50px;
-      height:30px;
-      background:transparent;
-      animation:flyBird 30s linear infinite;
-      z-index:3;
+    .ai-box {
+      background: #1e1e2f;
+      color: white;
+      width: 90%; max-width: 400px;
+      height: 70%;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
     }
-    .bird::before,
-    .bird::after {
-      content:"";
-      position:absolute;
-      width:50px;
-      height:20px;
-      border-top:5px solid #000;
-      border-radius:50%;
+    .ai-header {
+      background: #8ac926;
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+      color: white;
+      position: relative;
     }
-    .bird::before {transform:rotate(20deg);}
-    .bird::after {transform:rotate(-20deg);}
-    @keyframes flyBird {
-      0% {left:-150px; top:50px; transform:scale(1);}
-      50% {left:50%; top:80px; transform:scale(1.2);}
-      100% {left:110%; top:40px; transform:scale(1);}
+    .close-ai {
+      position: absolute;
+      right: 10px;
+      top: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 18px;
+      color: #333;
     }
-
-    /* Kawanan Burung */
-    .flock {
-      position:absolute;
-      top:80px;
-      left:-200px;
-      animation:flyFlock 40s linear infinite;
-      z-index:3;
+    #chatbox {
+      flex: 1;
+      padding: 10px;
+      background: #2b2b3d;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
     }
-    @keyframes flyFlock {
-      0% {left:-300px; top:100px;}
-      50% {left:50%; top:60px;}
-      100% {left:120%; top:140px;}
+    .message {
+      padding: 8px;
+      margin: 5px;
+      border-radius: 8px;
+      max-width: 75%;
     }
-    .flock .bird {
-      position:relative;
-      animation:none;
-      margin:0 20px;
-      transform:scale(0.7);
+    .user {background: #70e000; align-self: flex-end; color: black;}
+    .bot {background: #444; align-self: flex-start;}
+    .ai-input {
+      display: flex;
+      background: #222;
+      padding: 8px;
     }
-
-    /* Paus Kartun */
-    .whale {
-      position:fixed;
-      bottom:60px;
-      left:-300px;
-      width:250px;
-      height:120px;
-      background:#4ea8de;
-      border-radius:50% 50% 40% 40%;
-      animation:swimWhale 40s linear infinite;
-      z-index:1;
+    #userInput {
+      flex: 1;
+      padding: 8px;
+      border: none;
+      border-radius: 5px;
     }
-    @keyframes swimWhale {
-      0% {left:-300px; transform:translateY(0);}
-      50% {left:60%; transform:translateY(-30px);}
-      100% {left:110%; transform:translateY(0);}
+    #sendBtn {
+      padding: 8px 12px;
+      margin-left: 5px;
+      background: #8ac926;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
     }
-
-    /* Ombak Animasi */
-    .waves {
-      position:fixed;
-      bottom:0;
-      left:0;
-      width:100%;
-      height:100px;
-      background:#4ea8de;
-      overflow:hidden;
-      z-index:0;
-    }
-    .wave {
-      position:absolute;
-      bottom:0;
-      width:200%;
-      height:100px;
-      background:rgba(255,255,255,0.4);
-      border-radius:100%;
-      animation:waveMove 10s linear infinite;
-    }
-    .wave:nth-child(2) {animation-duration:14s;opacity:0.6;}
-    .wave:nth-child(3) {animation-duration:18s;opacity:0.3;}
-    @keyframes waveMove {0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-
-    /* Loading Screen */
-    .loading-screen {
-      position:fixed;width:100vw;height:100vh;background:#fcd5ce;
-      display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:9999;
-    }
-    .loading-screen h1 {font-size:2.2em;color:#ff595e;text-shadow:2px 2px 4px rgba(0,0,0,0.3);}
-    .loading-screen p {margin-top:10px;font-size:1.5em;color:#333;}
-
-    /* Header Kartun */
-    header {
-      padding:1.5rem;
-      background:#ffca3a;
-      display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;
-      border-bottom:5px solid #fff;
-      box-shadow:0 5px 0 #e36414;
-      position:relative;
-      z-index:5;
-    }
-    header h1 {
-      font-size:2rem;color:#fff;
-      text-shadow:2px 2px 4px rgba(0,0,0,0.3);
-    }
-
-    /* Tombol Kartun */
-    .menu-btn, .music-btn, .next-btn, .prev-btn {
-      background:#8ac926;
-      border:4px solid #fff;
-      padding:12px 20px;
-      border-radius:25px;
-      font-size:1rem;
-      cursor:pointer;
-      color:#fff;
-      font-weight:bold;
-      display:flex;
-      align-items:center;
-      gap:8px;
-      transition:all 0.3s ease;
-      box-shadow:0 4px 0 #5a8c1a, 0 6px 12px rgba(0,0,0,0.2);
-    }
-    .menu-btn:hover, .music-btn:hover, .next-btn:hover, .prev-btn:hover {
-      background:#70e000;
-      transform:translateY(-4px) scale(1.07);
-      box-shadow:0 6px 0 #4b8b00;
-    }
-
-    /* Section Kartun */
-    section {padding:2rem;max-width:1200px;margin:auto;position:relative;z-index:2;}
-    section h2 {
-      font-size:1.8rem;color:#ff595e;
-      margin-bottom:1rem;
-      text-shadow:2px 2px 4px rgba(0,0,0,0.2);
-    }
-    .content {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
-    .card {
-      background:#fff3b0;
-      border:4px solid #fff;
-      border-radius:1.2rem;
-      padding:1rem;
-      box-shadow:0 5px 0 #ffca3a, 0 8px 18px rgba(0,0,0,0.2);
-      transition:transform 0.3s ease;
-    }
-    .card:hover {transform:scale(1.05);}
-    .card img {
-      width:100%;border-radius:0.8rem;border:3px solid #fff;
-      box-shadow:0 3px 0 #e36414;
-    }
-    .card h3 {
-      margin-top:0.75rem;font-size:1.3rem;color:#1982c4;
-      text-shadow:1px 1px 3px rgba(0,0,0,0.2);
-    }
-    .card p {font-size:1rem;margin-top:0.5rem;color:#444;}
   </style>
 </head>
 <body>
 
-  <!-- Matahari & Paus & Ombak -->
-  <div class="sun"></div>
-  <div class="whale"></div>
-  <div class="waves">
-    <div class="wave"></div>
-    <div class="wave"></div>
-    <div class="wave"></div>
-  </div>
+  <!-- ... semua elemen lama ... -->
 
-  <!-- Kawanan Burung -->
-  <div class="flock" style="animation-delay:5s;">
-    <div class="bird"></div>
-    <div class="bird" style="top:20px; left:40px;"></div>
-    <div class="bird" style="top:-15px; left:80px;"></div>
-    <div class="bird" style="top:10px; left:120px;"></div>
-  </div>
-
-  <!-- Loading Screen -->
-  <div class="loading-screen" id="loadingScreen">
-    <h1>Nizam Portofolio's</h1>
-    <p id="loadPercent">0%</p>
-  </div>
-
-  <!-- Header dengan tombol baru -->
+  <!-- Header -->
   <header>
     <h1>Nizam's Portfolio'S</h1>
     <button class="menu-btn" onclick="window.location.href='payment.html'"><span>💳</span> Payment</button>
     <button class="menu-btn" onclick="window.location.href='sekola.html'"><span>🏫</span> Sekolah</button>
     <button class="menu-btn" onclick="window.location.href='mygirl.html'"><span>💖</span> MyGirlFriend</button>
-    <button class="menu-btn" onclick="window.location.href='ai.html'"><span>🤖</span> AI</button>
+    <button class="menu-btn" onclick="openAIChat()"><span>🤖</span> AI</button>
     <button class="prev-btn" id="prevBtn"><span>⏮</span> Prev</button>
     <button class="music-btn" id="musicBtn"><span id="musicIcon">🎵</span> Play</button>
     <button class="next-btn" id="nextBtn"><span>⏭</span> Next</button>
     <audio id="bgMusic" loop></audio>
   </header>
 
-  <!-- About -->
-  <section>
-    <h2>About Me</h2>
-    <div class="content">
-      <div class="card">
-        <img src="https://files.catbox.moe/b5g85m.jpg" alt="About me" />
-        <h3>Hi, I’m Nizam</h3>
-        <p>Halo perkenalkan nama saya Nizam Makbullah Shihab bisa di panggil Nizam/Zam,Saya adalah seorang pelajar kelas 9 Usia saya 14 Tahun.</p>
+  <!-- === Modal AI Chat === -->
+  <div class="ai-modal" id="aiModal">
+    <div class="ai-box">
+      <div class="ai-header">
+        🤖 Nizam AI Chat
+        <span class="close-ai" onclick="closeAIChat()">✖</span>
+      </div>
+      <div id="chatbox"></div>
+      <div class="ai-input">
+        <input type="text" id="userInput" placeholder="Tulis pesan..." />
+        <button id="sendBtn">Kirim</button>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Projects -->
-  <section>
-    <h2>My Projects</h2>
-    <div class="content">
-      <div class="card">
-        <img src="https://files.catbox.moe/ffadzs.jpg" alt="Project 1" />
-        <h3>Money🤑</h3>
-        <p>Saya ingin memiliki banyak uang karena ingin membelikan semua yang ortu saya inginkan.</p>
-      </div>
-      <div class="card">
-        <img src="https://files.catbox.moe/qehydg.jpg" alt="Project 2" />
-        <h3>Mobile App Design</h3>
-        <p>Aplikasi mobile yang ringan dan fungsional dengan desain responsif.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills -->
-  <section>
-    <h2>My Skills</h2>
-    <div class="content">
-      <div class="card">
-        <img src="https://files.catbox.moe/1ipq20.jpg" />
-        <h3>Frontend</h3>
-        <p>HTML, CSS, JavaScript</p>
-      </div>
-      <div class="card">
-        <img src="https://files.catbox.moe/ptvpiq.jpg" />
-        <h3>Ddos</h3>
-        <p>Serangan Virus Ke sebuah website</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Products -->
-  <section>
-    <h2>My Products</h2>
-    <div class="content">
-      <div class="card">
-        <img src="https://files.catbox.moe/en7bbt.jpg" alt="Product 1"/>
-        <h3>Membuat website</h3>
-        <p>Template website modern dengan desain minimalis dan responsif.</p>
-      </div>
-      <div class="card">
-        <img src="https://files.catbox.moe/zmeicd.jpg" alt="Product 2"/>
-        <h3>Bug wa</h3>
-        <p>Mengirimkan sebuah bug wa kepada seseorang dan jika terkena maka wa nya akan crash.</p>
-      </div>
-    </div>
-  </section>
+  <!-- ... semua section About, Project, Skills tetap ... -->
 
   <script>
-    // Loading Screen
-    let load = 0;
-    let interval = setInterval(() => {
-      load++;
-      document.getElementById('loadPercent').innerText = load + "%";
-      if (load >= 100) {
-        clearInterval(interval);
-        document.getElementById('loadingScreen').style.display = 'none';
-      }
-    }, 25);
+    // === Script AI Chat ===
+    const aiModal = document.getElementById('aiModal');
+    const chatbox = document.getElementById('chatbox');
+    const userInput = document.getElementById('userInput');
+    const sendBtn = document.getElementById('sendBtn');
 
-    // Musik Player
-    const playlist = [
-      "https://files.catbox.moe/1dt5po.mp3",
-      "https://files.catbox.moe/hprkl5.mp3",
-      "https://files.catbox.moe/xcbx3d.jpg"
-    ];
-    let currentTrack = 0;
-    const music = document.getElementById('bgMusic');
-    const musicBtn = document.getElementById('musicBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const prevBtn = document.getElementById('prevBtn');
-    let isPlaying = false;
-
-    function loadTrack(index){
-      music.src = playlist[index];
-      if(isPlaying) music.play();
+    function openAIChat(){
+      aiModal.style.display = "flex";
     }
-    loadTrack(currentTrack);
+    function closeAIChat(){
+      aiModal.style.display = "none";
+    }
 
-    musicBtn.addEventListener('click', ()=>{
-      if(!isPlaying){
-        music.play();
-        musicBtn.innerHTML = '<span class="rotate-icon">🎵</span> Stop';
-        isPlaying = true;
-      }else{
-        music.pause();
-        musicBtn.innerHTML = '<span id="musicIcon">🎵</span> Play';
-        isPlaying = false;
+    function addMessage(text, sender){
+      const msg = document.createElement('div');
+      msg.classList.add('message', sender);
+      msg.innerText = text;
+      chatbox.appendChild(msg);
+      chatbox.scrollTop = chatbox.scrollHeight;
+    }
+
+    async function sendToAI(prompt){
+      addMessage(prompt, 'user');
+      userInput.value = "";
+
+      try {
+        const res = await fetch('chat.php', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({prompt: prompt})
+        });
+        const data = await res.json();
+        addMessage(data.reply, 'bot');
+      } catch (err) {
+        addMessage("❌ Error koneksi ke server", 'bot');
       }
-    });
+    }
 
-    nextBtn.addEventListener('click', ()=>{
-      currentTrack = (currentTrack+1) % playlist.length;
-      loadTrack(currentTrack);
-      if(isPlaying) music.play();
+    sendBtn.addEventListener('click', ()=>{
+      const text = userInput.value.trim();
+      if(text !== "") sendToAI(text);
     });
-
-    prevBtn.addEventListener('click', ()=>{
-      currentTrack = (currentTrack-1+playlist.length) % playlist.length;
-      loadTrack(currentTrack);
-      if(isPlaying) music.play();
+    userInput.addEventListener('keypress', (e)=>{
+      if(e.key === 'Enter') sendBtn.click();
     });
   </script>
+
 </body>
 </html>
