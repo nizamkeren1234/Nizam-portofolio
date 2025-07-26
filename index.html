@@ -8,6 +8,7 @@
     * {margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
     body {background:#0f172a;color:white;}
 
+    /* Loading Screen */
     .loading-screen {
       position:fixed;width:100vw;height:100vh;background:#111;
       display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:9999;
@@ -15,6 +16,7 @@
     .loading-screen h1 {font-size:2em;color:#38bdf8;}
     .loading-screen p {margin-top:10px;font-size:1.5em;color:#fff;}
 
+    /* Header Darkglass */
     header {
       padding:1.5rem;text-align:center;
       background:rgba(30,41,59,0.4);
@@ -25,7 +27,7 @@
     header h1 {font-size:2rem;color:#38bdf8;text-shadow:0 0 12px #0ea5e9;}
 
     /* Tombol Darkglass + 3D */
-    .music-btn, .next-btn, .prev-btn, .menu-btn {
+    .menu-btn, .music-btn, .next-btn, .prev-btn {
       background:rgba(56,189,248,0.25);
       border:1px solid rgba(255,255,255,0.15);
       padding:10px 16px;
@@ -42,35 +44,23 @@
       box-shadow:0 4px 15px rgba(0,0,0,0.4);
       transform-style:preserve-3d;
     }
-    .music-btn:hover, .next-btn:hover, .prev-btn:hover, .menu-btn:hover {
+    .menu-btn:hover, .music-btn:hover, .next-btn:hover, .prev-btn:hover {
       background:rgba(56,189,248,0.4);
       transform:translateY(-3px) scale(1.05) rotateX(5deg);
       box-shadow:0 8px 25px rgba(56,189,248,0.4);
     }
-    .music-btn:active, .next-btn:active, .prev-btn:active, .menu-btn:active {
-      transform:translateY(2px) scale(0.95) rotateX(0);
-      box-shadow:0 2px 8px rgba(0,0,0,0.5);
-    }
 
-    /* Efek ikon berputar */
-    .music-btn span, .next-btn span, .prev-btn span, .menu-btn span {
+    /* Efek Ikon Berputar */
+    .menu-btn span, .music-btn span, .next-btn span, .prev-btn span {
       display:inline-block;
       transition:transform 0.6s ease;
     }
-    .music-btn:hover span,
-    .next-btn:hover span,
-    .prev-btn:hover span,
-    .menu-btn:hover span {
+    .menu-btn:hover span, .music-btn:hover span,
+    .next-btn:hover span, .prev-btn:hover span {
       transform:rotate(360deg);
     }
 
-    /* Ikon Music muter otomatis */
-    .rotate-icon {
-      display:inline-block;
-      animation:spin 2s linear infinite;
-    }
-    @keyframes spin {0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
-
+    /* Section */
     section {padding:2rem;max-width:1200px;margin:auto;}
     section h2 {font-size:1.8rem;color:#38bdf8;margin-bottom:1rem;}
     .content {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
@@ -90,20 +80,17 @@
     .card img {width:100%;border-radius:0.75rem;}
     .card h3 {margin-top:0.75rem;font-size:1.2rem;color:#38bdf8;}
     .card p {font-size:0.95rem;margin-top:0.5rem;color:#cbd5e1;}
-
-    @media (max-width:600px){
-      header{flex-direction:column;}
-      header h1{font-size:1.5rem;}
-    }
   </style>
 </head>
 <body>
 
+  <!-- Loading Screen -->
   <div class="loading-screen" id="loadingScreen">
     <h1>Nizam Portofolio's</h1>
     <p id="loadPercent">0%</p>
   </div>
 
+  <!-- Header -->
   <header>
     <h1>Nizam's Portfolio'S</h1>
     <button class="menu-btn" onclick="window.location.href='payment.html'"><span>💳</span> Payment</button>
@@ -189,7 +176,7 @@
       }
     }, 25);
 
-    // Playlist Musik
+    // Musik Player
     const playlist = [
       "https://files.catbox.moe/6cdxqv.mp3",
       "https://files.catbox.moe/xn7otz.mp3",
@@ -211,7 +198,7 @@
     musicBtn.addEventListener('click', ()=>{
       if(!isPlaying){
         music.play();
-        musicBtn.innerHTML = '<span id="musicIcon" class="rotate-icon">🎵</span> Stop';
+        musicBtn.innerHTML = '<span class="rotate-icon">🎵</span> Stop';
         isPlaying = true;
       }else{
         music.pause();
