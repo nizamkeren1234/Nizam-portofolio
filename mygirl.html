@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My GirlFriend</title>
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif;}
+    body {
+      background:linear-gradient(#ffdde1, #ee9ca7);
+      color:#fff;
+      overflow-x:hidden;
+      min-height:100vh;
+      position:relative;
+    }
+
+    /* Header */
+    header {
+      padding:1.2rem;
+      background:#ff4d6d;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      border-bottom:5px solid #fff;
+      box-shadow:0 5px 0 #c9184a;
+      position:relative;
+      z-index:10;
+    }
+    header h1 {
+      font-size:2rem;
+      color:#fff;
+      text-shadow:2px 2px 4px rgba(0,0,0,0.3);
+    }
+    .back-btn {
+      background:#ff758f;
+      border:3px solid #fff;
+      padding:10px 18px;
+      border-radius:25px;
+      color:#fff;
+      font-weight:bold;
+      cursor:pointer;
+      transition:all 0.3s ease;
+      box-shadow:0 4px 0 #c9184a;
+    }
+    .back-btn:hover {
+      background:#ffb3c1;
+      transform:translateY(-3px);
+    }
+
+    /* Konten utama */
+    .container {
+      max-width:900px;
+      margin:4rem auto;
+      text-align:center;
+      padding:1rem;
+    }
+    h2 {
+      font-size:2.2rem;
+      margin-bottom:1rem;
+      color:#fff;
+      text-shadow:2px 2px 6px rgba(0,0,0,0.4);
+    }
+    p {
+      font-size:1.2rem;
+      line-height:1.7;
+      color:#fff;
+      text-shadow:1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    /* Grid 3 Slot */
+    .cards {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+      gap:1.5rem;
+      margin-top:2rem;
+    }
+    .card {
+      background:rgba(255,255,255,0.2);
+      border:3px solid #fff;
+      border-radius:1rem;
+      padding:1rem;
+      text-align:center;
+      box-shadow:0 6px 12px rgba(0,0,0,0.3);
+      backdrop-filter:blur(6px);
+    }
+    .card img {
+      width:100%;
+      max-width:300px;
+      border-radius:1rem;
+      border:3px solid #fff;
+      box-shadow:0 4px 10px rgba(0,0,0,0.4);
+    }
+    .card h3 {
+      margin-top:1rem;
+      font-size:1.3rem;
+      color:#fff;
+    }
+
+    /* Tombol Musik */
+    .music-btn {
+      margin-top:1.5rem;
+      background:#ff758f;
+      border:3px solid #fff;
+      padding:10px 20px;
+      border-radius:25px;
+      color:#fff;
+      font-weight:bold;
+      cursor:pointer;
+      transition:all 0.3s ease;
+      box-shadow:0 4px 0 #c9184a;
+    }
+    .music-btn:hover {
+      background:#ffb3c1;
+      transform:translateY(-3px);
+    }
+
+    /* Animasi Hati Jatuh */
+    .heart {
+      position:absolute;
+      top:-50px;
+      color:#ff4d6d;
+      font-size:2rem;
+      animation:fall 7s linear infinite;
+      opacity:0.8;
+      z-index:0;
+    }
+    @keyframes fall {
+      0% {transform:translateY(0) rotate(0deg); opacity:1;}
+      100% {transform:translateY(110vh) rotate(360deg); opacity:0;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>💖 My GirlFriend 💖</h1>
+    <button class="back-btn" onclick="window.location.href='index.html'">⬅ Back</button>
+  </header>
+
+  <!-- Container -->
+  <div class="container">
+    <h2>Untuk Orang Spesialku 💕</h2>
+    <p>
+      Kamu adalah alasan aku tersenyum setiap hari.  
+      Dunia terasa lebih indah saat ada kamu di sisiku.  
+      Terima kasih sudah jadi bagian dari hidupku.  
+    </p>
+
+    <!-- 3 Slot Card -->
+    <div class="cards">
+      <div class="card">
+        <img src="https://files.catbox.moe/xcbx3d.jpg" alt="My Girl">
+        <h3>💓 Cewe gw Boss 💓</h3>
+      </div>
+
+      <div class="card">
+        <img src="https://files.catbox.moe/rufc7u.jpg" alt="Memories">
+        <h3>🌸 Alicia Ajen Paling Cantik 🌸</h3>
+      </div>
+
+      <div class="card">
+        <img src="https://files.catbox.moe/hrrvtj.jpg" alt="Special Moment">
+        <h3>💞 Foto terindah mu 💞</h3>
+      </div>
+    </div>
+
+    <!-- Tombol Musik -->
+    <button class="music-btn" id="musicBtn">🎵 Pause Music</button>
+    <audio id="bgMusic" autoplay loop>
+      <source src="https://files.catbox.moe/1dt5po.mp3" type="audio/mp3">
+    </audio>
+  </div>
+
+  <!-- Hati Jatuh Otomatis -->
+  <script>
+    function createHeart(){
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (Math.random() * 1.5 + 1.5) + "rem";
+      document.body.appendChild(heart);
+      setTimeout(()=>{ heart.remove(); }, 7000);
+    }
+    setInterval(createHeart, 400);
+
+    // Kontrol Musik
+    const music = document.getElementById("bgMusic");
+    const musicBtn = document.getElementById("musicBtn");
+    let isPlaying = true;
+
+    musicBtn.addEventListener("click", ()=>{
+      if(isPlaying){
+        music.pause();
+        musicBtn.textContent = "🎵 Play Music";
+        isPlaying = false;
+      } else {
+        music.play();
+        musicBtn.textContent = "🎵 Pause Music";
+        isPlaying = true;
+      }
+    });
+  </script>
+
+</body>
+</html>
