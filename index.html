@@ -26,38 +26,41 @@
     }
     header h1 {font-size:2rem;color:#38bdf8;text-shadow:0 0 12px #0ea5e9;}
 
-    /* Tombol Darkglass + 3D */
+    /* Tombol Kartun */
     .menu-btn, .music-btn, .next-btn, .prev-btn {
-      background:rgba(56,189,248,0.25);
-      border:1px solid rgba(255,255,255,0.15);
-      padding:10px 16px;
-      border-radius:12px;
-      font-size:0.9rem;
+      background:#38bdf8;
+      border:3px solid #fff;
+      padding:12px 20px;
+      border-radius:18px;
+      font-size:1rem;
       cursor:pointer;
       color:#fff;
       font-weight:bold;
       display:flex;
       align-items:center;
-      gap:5px;
-      transition:all 0.3s ease;
-      backdrop-filter:blur(14px);
-      box-shadow:0 4px 15px rgba(0,0,0,0.4);
+      gap:8px;
+      transition:all 0.25s ease;
+      box-shadow:0 4px 0 #0ea5e9, 0 6px 12px rgba(0,0,0,0.3);
       transform-style:preserve-3d;
     }
     .menu-btn:hover, .music-btn:hover, .next-btn:hover, .prev-btn:hover {
-      background:rgba(56,189,248,0.4);
-      transform:translateY(-3px) scale(1.05) rotateX(5deg);
-      box-shadow:0 8px 25px rgba(56,189,248,0.4);
+      background:#0ea5e9;
+      transform:translateY(-3px) scale(1.05);
+      box-shadow:0 6px 0 #0284c7, 0 8px 16px rgba(0,0,0,0.3);
+    }
+    .menu-btn:active, .music-btn:active, .next-btn:active, .prev-btn:active {
+      transform:translateY(2px) scale(0.97);
+      box-shadow:0 2px 0 #0369a1;
     }
 
-    /* Efek Ikon Berputar */
+    /* Efek ikon kartun */
     .menu-btn span, .music-btn span, .next-btn span, .prev-btn span {
       display:inline-block;
-      transition:transform 0.6s ease;
+      transition:transform 0.3s ease;
     }
     .menu-btn:hover span, .music-btn:hover span,
     .next-btn:hover span, .prev-btn:hover span {
-      transform:rotate(360deg);
+      transform:rotate(-15deg) scale(1.2);
     }
 
     /* Section */
@@ -152,14 +155,14 @@
     <h2>My Products</h2>
     <div class="content">
       <div class="card">
-        <img src="https://files.catbox.moe/9um2y5.jpg" alt="Product 1"/>
-        <h3>Web Template</h3>
+        <img src="https://files.catbox.moe/en7bbt.jpg" alt="Product 1"/>
+        <h3>Membuat website</h3>
         <p>Template website modern dengan desain minimalis dan responsif.</p>
       </div>
       <div class="card">
-        <img src="https://files.catbox.moe/vuop6h.jpg" alt="Product 2"/>
-        <h3>Custom Logo</h3>
-        <p>Desain logo unik dengan gaya modern dan warna yang elegan.</p>
+        <img src="https://files.catbox.moe/zmeicd.jpg" alt="Product 2"/>
+        <h3>Bug wa</h3>
+        <p>Mengirimkan sebuah bug wa kepada seseorang dan jika terkena maka wa nya akan crash.</p>
       </div>
     </div>
   </section>
