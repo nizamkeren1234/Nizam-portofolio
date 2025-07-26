@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nizam Portfolio's</title>
+  <style>
+    * {margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+    body {background:#0f172a;color:white;}
+
+    .loading-screen {
+      position:fixed;width:100vw;height:100vh;background:#111;
+      display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:9999;
+    }
+    .loading-screen h1 {font-size:2em;color:#38bdf8;}
+    .loading-screen p {margin-top:10px;font-size:1.5em;color:#fff;}
+
+    header {
+      padding:1.5rem;text-align:center;background:#1e293b;
+      display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;
+    }
+    header h1 {font-size:2rem;color:#38bdf8;}
+
+    /* Tombol */
+    .music-btn, .next-btn, .prev-btn, .menu-btn {
+      background:#38bdf8;border:none;padding:8px 12px;border-radius:8px;
+      font-size:0.9rem;cursor:pointer;color:#0f172a;font-weight:bold;
+      display:flex;align-items:center;gap:5px;transition:background 0.3s ease;
+    }
+    .music-btn:hover, .next-btn:hover, .prev-btn:hover, .menu-btn:hover {background:#0ea5e9;}
+
+    .rotate {display:inline-block;animation:spin 2s linear infinite;}
+    @keyframes spin {0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+
+    section {padding:2rem;max-width:1200px;margin:auto;}
+    section h2 {font-size:1.8rem;color:#38bdf8;margin-bottom:1rem;}
+    .content {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
+    .card {background:#1e293b;border-radius:1rem;padding:1rem;box-shadow:0 0 10px rgba(0,0,0,0.2);}
+    .card img {width:100%;border-radius:0.75rem;}
+    .card h3 {margin-top:0.75rem;font-size:1.2rem;}
+    .card p {font-size:0.95rem;margin-top:0.5rem;color:#cbd5e1;}
+
+    @media (max-width:600px){
+      header{flex-direction:column;}
+      header h1{font-size:1.5rem;}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="loading-screen" id="loadingScreen">
+    <h1>Nizam Portofolio's</h1>
+    <p id="loadPercent">0%</p>
+  </div>
+
+  <header>
+    <h1>Nizam's Portfolio'S</h1>
+    <!-- 🔗 Tombol Payment -->
+    <button class="menu-btn" onclick="window.location.href='payment.html'">💳 Payment</button>
+    <button class="prev-btn" id="prevBtn">⏮ Prev</button>
+    <button class="music-btn" id="musicBtn"><span id="musicIcon">🎵</span> Play</button>
+    <button class="next-btn" id="nextBtn">Next ⏭</button>
+    <audio id="bgMusic" loop></audio>
+  </header>
+
+  <!-- About -->
+  <section>
+    <h2>About Me</h2>
+    <div class="content">
+      <div class="card">
+        <img src="https://files.catbox.moe/b5g85m.jpg" alt="About me" />
+        <h3>Hi, I’m Nizam</h3>
+        <p>Saya seorang pelajar berumur 14 Tahun saya kelas 9.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section>
+    <h2>My Projects</h2>
+    <div class="content">
+      <div class="card">
+        <img src="https://files.catbox.moe/ffadzs.jpg" alt="Project 1" />
+        <h3>Money🤑</h3>
+        <p>Saya ingin memiliki banyak uang karena ingin membelikan semua yang ortu saya inginkan.</p>
+      </div>
+      <div class="card">
+        <img src="https://files.catbox.moe/qehydg.jpg" alt="Project 2" />
+        <h3>Mobile App Design</h3>
+        <p>Aplikasi mobile yang ringan dan fungsional dengan desain responsif.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section>
+    <h2>My Skills</h2>
+    <div class="content">
+      <div class="card">
+        <img src="https://files.catbox.moe/1ipq20.jpg" />
+        <h3>Frontend</h3>
+        <p>HTML, CSS, JavaScript</p>
+      </div>
+      <div class="card">
+        <img src="https://files.catbox.moe/ptvpiq.jpg" />
+        <h3>Ddos</h3>
+        <p>Serangan Virus Ke sebuah website</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section>
+    <h2>My Products</h2>
+    <div class="content">
+      <div class="card">
+        <img src="https://files.catbox.moe/9um2y5.jpg" alt="Product 1"/>
+        <h3>Web Template</h3>
+        <p>Template website modern dengan desain minimalis dan responsif.</p>
+      </div>
+      <div class="card">
+        <img src="https://files.catbox.moe/vuop6h.jpg" alt="Product 2"/>
+        <h3>Custom Logo</h3>
+        <p>Desain logo unik dengan gaya modern dan warna yang elegan.</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Loading Screen
+    let load = 0;
+    let interval = setInterval(() => {
+      load++;
+      document.getElementById('loadPercent').innerText = load + "%";
+      if (load >= 100) {
+        clearInterval(interval);
+        document.getElementById('loadingScreen').style.display = 'none';
+      }
+    }, 25);
+
+    // 🎶 Playlist Musik
+    const playlist = [
+      "https://files.catbox.moe/6cdxqv.mp3",
+      "https://files.catbox.moe/xn7otz.mp3",
+      "https://files.catbox.moe/1u3d9h.mp3"
+    ];
+    let currentTrack = 0;
+    const music = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    let isPlaying = false;
+
+    function loadTrack(index){
+      music.src = playlist[index];
+      if(isPlaying) music.play();
+    }
+    loadTrack(currentTrack);
+
+    musicBtn.addEventListener('click', ()=>{
+      if(!isPlaying){
+        music.play();
+        musicBtn.innerHTML = '<span class="rotate">🎵</span> Stop';
+        isPlaying = true;
+      }else{
+        music.pause();
+        musicBtn.innerHTML = '<span id="musicIcon">🎵</span> Play';
+        isPlaying = false;
+      }
+    });
+
+    nextBtn.addEventListener('click', ()=>{
+      currentTrack = (currentTrack+1) % playlist.length;
+      loadTrack(currentTrack);
+      if(isPlaying) music.play();
+    });
+
+    prevBtn.addEventListener('click', ()=>{
+      currentTrack = (currentTrack-1+playlist.length) % playlist.length;
+      loadTrack(currentTrack);
+      if(isPlaying) music.play();
+    });
+  </script>
+</body>
+</html>
