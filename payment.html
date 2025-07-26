@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment</title>
+  <style>
+    body {
+      background:#0f172a;color:white;font-family:'Segoe UI',sans-serif;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      height:100vh;text-align:center;
+    }
+    h1 {color:#38bdf8;margin-bottom:10px;}
+    .pay-option {
+      background:#1e293b;padding:20px;margin:10px;border-radius:12px;
+      width:250px;cursor:pointer;transition:background 0.3s ease;
+    }
+    .pay-option:hover {background:#334155;}
+    .pay-option img {width:100%;border-radius:8px;}
+    a {
+      display:inline-block;margin-top:20px;padding:10px 15px;background:#38bdf8;
+      color:#0f172a;text-decoration:none;border-radius:8px;font-weight:bold;
+    }
+    a:hover {background:#0ea5e9;}
+  </style>
+</head>
+<body>
+  <h1>💳 Payment Page</h1>
+  <p>Pilih metode pembayaran:</p>
+
+  <!-- Opsi Dana -->
+  <div class="pay-option">
+    <h3>DANA</h3>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/DANA_Logo.png" alt="Dana">
+    <p>Scan untuk membayar via DANA</p>
+  </div>
+
+  <!-- Opsi QRIS -->
+  <div class="pay-option">
+    <h3>QRIS</h3>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/QRIS_logo.png" alt="QRIS">
+    <p>Scan untuk membayar via QRIS</p>
+  </div>
+
+  <a href="index.html">⬅ Kembali ke Menu Utama</a>
+</body>
+</html>
