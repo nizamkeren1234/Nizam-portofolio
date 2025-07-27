@@ -5,105 +5,117 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Payment</title>
   <style>
-    * {margin:0;padding:0;box-sizing:border-box;}
+    * {margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
     body {
-      background:linear-gradient(#87ceeb, #fefefe);
-      font-family:'Segoe UI',sans-serif;color:#333;
+      background:#0a0f1e;
+      color:#fff;
       display:flex;flex-direction:column;align-items:center;
       justify-content:flex-start;min-height:100vh;text-align:center;
-      overflow:hidden;position:relative;
+      overflow-x:hidden; /* ✅ Perbaiki scroll */
+      position:relative;
     }
-    h1 {color:#ff6b6b;margin-top:20px;text-shadow:2px 2px #fff;}
-    p {margin-bottom:10px;}
+    h1 {
+      color:#00f7ff;
+      margin-top:20px;
+      text-shadow:0 0 15px #00f7ff,0 0 30px #00e6e6;
+      font-size:2.2em;
+      z-index:10;
+    }
+    p {margin-bottom:10px;color:#ccc;}
 
-    /* Payment Card */
+    /* Neon Payment Card */
     .pay-option {
-      background:rgba(255,255,255,0.8);padding:20px;margin:10px;border-radius:15px;
-      width:250px;cursor:pointer;transition:transform 0.3s;
-      box-shadow:0 4px 8px rgba(0,0,0,0.2);
+      background:rgba(15,25,50,0.9);
+      padding:20px;margin:12px;border-radius:15px;
+      width:260px;cursor:pointer;transition:transform 0.3s, box-shadow 0.3s;
+      box-shadow:0 0 15px rgba(0,255,255,0.3);
+      border:1px solid rgba(0,255,255,0.3);
       z-index:10;
     }
-    .pay-option:hover {transform:scale(1.05);}
+    .pay-option:hover {
+      transform:scale(1.05);
+      box-shadow:0 0 25px #00f7ff;
+    }
     .pay-option img {width:100%;border-radius:10px;}
+
+    /* Tombol kembali */
     a {
-      display:inline-block;margin:20px;padding:10px 15px;background:#ffb703;
-      color:#000;text-decoration:none;border-radius:10px;font-weight:bold;
-      box-shadow:0 3px 6px rgba(0,0,0,0.3);
+      display:inline-block;margin:20px;padding:12px 20px;
+      background:#00f7ff;color:#000;text-decoration:none;border-radius:10px;
+      font-weight:bold;
+      box-shadow:0 0 20px #00f7ff, 0 0 40px #00e6e6;
+      transition:background 0.3s,transform 0.3s;
       z-index:10;
     }
-    a:hover {background:#ffa500;}
-
-    /* Awan */
-    .cloud {
-      position:absolute;top:50px;width:120px;height:60px;
-      background:rgba(255,255,255,0.5);border-radius:50px;
-      animation:moveClouds 60s linear infinite;
-    }
-    .cloud::before,.cloud::after {
-      content:"";position:absolute;background:rgba(255,255,255,0.5);
-      width:100px;height:60px;border-radius:50px;
-    }
-    .cloud::before {top:-20px;left:10px;}
-    .cloud::after {top:-10px;left:60px;}
-    @keyframes moveClouds {
-      0% {left:-200px;}
-      100% {left:110%;}
+    a:hover {
+      background:#00d5ff;
+      transform:scale(1.08);
     }
 
-    /* Matahari */
-    .sun {
-      position:absolute;top:20px;right:30px;width:100px;height:100px;
-      background:rgba(255,221,0,0.6);border-radius:50%;
-      box-shadow:0 0 40px rgba(255,221,0,0.5);
-      animation:spin 20s linear infinite;
+    /* Background Cyber Grid */
+    .grid {
+      position:absolute;top:0;left:0;width:100%;height:100%;
+      background:linear-gradient(rgba(0,255,255,0.05) 1px, transparent 1px),
+                 linear-gradient(90deg, rgba(0,255,255,0.05) 1px, transparent 1px);
+      background-size:40px 40px;
+      animation:moveGrid 8s linear infinite;
+      z-index:0;
     }
-    @keyframes spin {
-      0% {transform:rotate(0deg);}
-      100% {transform:rotate(360deg);}
-    }
-
-    /* Hewan */
-    .animal {
-      position:absolute;bottom:0;width:120px;opacity:0.6;
-      animation:floaty 6s ease-in-out infinite alternate;
-    }
-    .cat {left:10%;animation-delay:0s;}
-    .lion {left:40%;animation-delay:1s;}
-    .whale {left:70%;width:180px;animation-delay:2s;}
-
-    @keyframes floaty {
-      0% {transform:translateY(0);}
-      100% {transform:translateY(-20px);}
+    @keyframes moveGrid {
+      0% {background-position:0 0;}
+      100% {background-position:40px 40px;}
     }
 
     /* Tombol Musik */
     .music-controls {
       margin:10px 0;
-      background:rgba(255,255,255,0.7);padding:8px 12px;border-radius:12px;
-      box-shadow:0 3px 6px rgba(0,0,0,0.3);z-index:20;
+      background:rgba(0,255,255,0.1);
+      padding:8px 12px;border-radius:12px;
+      box-shadow:0 0 15px rgba(0,255,255,0.3);
+      z-index:10;
     }
     .music-controls button {
-      background:#ff6b6b;border:none;padding:6px 12px;margin:5px;
-      border-radius:8px;color:#fff;font-weight:bold;cursor:pointer;
+      background:#00f7ff;border:none;padding:6px 14px;margin:5px;
+      border-radius:8px;color:#000;font-weight:bold;cursor:pointer;
+      box-shadow:0 0 10px #00f7ff;
+      transition:transform 0.2s;
     }
-    .music-controls button:hover {background:#ff4757;}
+    .music-controls button:hover {transform:scale(1.1);}
+
+    /* Efek Particle */
+    .particle {
+      position:absolute;width:4px;height:4px;background:#00f7ff;
+      border-radius:50%;opacity:0.7;animation:float 8s linear infinite;
+    }
+    @keyframes float {
+      0% {transform:translateY(0);opacity:0;}
+      50% {opacity:1;}
+      100% {transform:translateY(-100vh);opacity:0;}
+    }
+
+    /* ✅ Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width:8px;
+    }
+    ::-webkit-scrollbar-track {
+      background:#0a0f1e;
+    }
+    ::-webkit-scrollbar-thumb {
+      background:#00f7ff;
+      border-radius:5px;
+      box-shadow:0 0 10px #00f7ff;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background:#00d5ff;
+    }
   </style>
 </head>
 <body>
-  <!-- Elemen Hiasan -->
-  <div class="sun"></div>
-  <div class="cloud" style="animation-delay:0s;"></div>
-  <div class="cloud" style="top:100px;animation-delay:15s;"></div>
-  <div class="cloud" style="top:150px;animation-delay:30s;"></div>
+  <div class="grid"></div>
 
-  <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" class="animal cat" alt="Cat">
-  <img src="https://cdn-icons-png.flaticon.com/512/616/616430.png" class="animal lion" alt="Lion">
-  <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" class="animal whale" alt="Whale">
-
-  <!-- Konten -->
   <h1>💳 Payment Page</h1>
 
-  <!-- Tombol Musik di bawah judul -->
+  <!-- Tombol Musik -->
   <div class="music-controls">
     <button onclick="playMusic()">▶ Play</button>
     <button onclick="stopMusic()">⏹ Stop</button>
@@ -114,7 +126,7 @@
   <div class="pay-option">
     <h3>DANA</h3>
     <img src="https://files.catbox.moe/7uu4pn.jpg" alt="Dana">
-    <p>PAKE QR YG DI BAWAH AJA</p>
+    <p>Scan QR DANA untuk membayar</p>
   </div>
 
   <div class="pay-option">
@@ -123,7 +135,8 @@
     <p>Scan untuk membayar via QRIS</p>
   </div>
 
-  <a href="index.html">⬅ Kembali ke Menu Utama</a>
+  <!-- Tombol Kembali ke Menu Portofolio -->
+  <a href="portfolio.html">⬅ Kembali ke Menu Portofolio</a>
 
   <audio id="bg-music" src="https://files.catbox.moe/1dt5po.mp3" autoplay loop></audio>
 
@@ -131,6 +144,16 @@
     const music = document.getElementById('bg-music');
     function playMusic(){ music.play(); }
     function stopMusic(){ music.pause(); music.currentTime = 0; }
+
+    // Generate Partikel Gaming
+    for(let i=0;i<30;i++){
+      let particle=document.createElement('div');
+      particle.className='particle';
+      particle.style.left=Math.random()*100+'%';
+      particle.style.top=(Math.random()*100)+'%';
+      particle.style.animationDuration=(5+Math.random()*5)+'s';
+      document.body.appendChild(particle);
+    }
   </script>
 </body>
 </html>
