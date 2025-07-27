@@ -5,113 +5,108 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DDOS Tools</title>
   <style>
-    * {margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+    * {margin:0;padding:0;box-sizing:border-box;font-family:monospace;}
     body {
-      background:linear-gradient(#87ceeb,#fef6e4);
-      color:#333;text-align:center;
-      overflow-x:hidden;
+      background:#000;
+      color:#0f0;
+      text-align:center;
+      min-height:200vh; /* ✅ Biar halaman lebih tinggi dari layar */
     }
 
-    /* Matahari */
-    .sun {
-      position:absolute;top:20px;right:40px;
-      width:120px;height:120px;
-      background:#ffdd00;border-radius:50%;
-      box-shadow:0 0 40px #ffea85;
-      animation:spin 20s linear infinite;
+    /* Background glitch */
+    @keyframes bgGlitch {
+      0% {background-color:#000;}
+      25% {background-color:#111;}
+      50% {background-color:#200;}
+      75% {background-color:#100;}
+      100% {background-color:#000;}
     }
-    @keyframes spin {0%{transform:rotate(0);}100%{transform:rotate(360deg);}}
+    body {animation:bgGlitch 0.5s infinite;}
 
-    /* Paus */
-    .whale {
-      position:fixed;bottom:60px;left:-300px;
-      width:250px;height:120px;background:#4ea8de;
-      border-radius:50% 50% 40% 40%;
-      animation:swim 40s linear infinite;
-    }
-    @keyframes swim {
-      0% {left:-300px;transform:translateY(0);}
-      50% {left:60%;transform:translateY(-30px);}
-      100% {left:110%;transform:translateY(0);}
-    }
-
-    /* Ombak */
-    .waves {
-      position:fixed;bottom:0;left:0;width:100%;height:100px;
-      background:#4ea8de;overflow:hidden;
-    }
-    .wave {
-      position:absolute;bottom:0;width:200%;height:100px;
-      background:rgba(255,255,255,0.4);
-      border-radius:100%;
-      animation:waveMove 10s linear infinite;
-    }
-    .wave:nth-child(2){animation-duration:14s;opacity:0.6;}
-    .wave:nth-child(3){animation-duration:18s;opacity:0.3;}
-    @keyframes waveMove {0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-
-    /* Header */
-    header {
-      background:#ffca3a;padding:1rem;
-      border-bottom:5px solid #fff;
-      box-shadow:0 5px 0 #e36414;
-    }
+    /* Header Glitch */
     header h1 {
-      color:#fff;font-size:2rem;
-      text-shadow:2px 2px 4px rgba(0,0,0,0.3);
+      font-size:2rem;
+      color:#f00;
+      text-shadow:2px 0 #0f0,-2px 0 #0ff,0 2px #ff0,0 -2px #0ff;
+      animation:glitchText 0.2s infinite;
+      margin-top:20px;
+    }
+    @keyframes glitchText {
+      0% {transform:translate(0);}
+      25% {transform:translate(2px,-2px);}
+      50% {transform:translate(-2px,2px);}
+      75% {transform:translate(1px,-1px);}
+      100% {transform:translate(0);}
     }
 
-    /* Konten */
+    /* Container */
     .container {
-      margin-top:2rem;
-      background:rgba(255,255,255,0.7);
+      margin:3rem auto;
+      background:rgba(0,0,0,0.7);
       display:inline-block;
       padding:2rem;
-      border-radius:15px;
-      box-shadow:0 4px 10px rgba(0,0,0,0.2);
+      border:2px solid #f00;
+      border-radius:10px;
+      box-shadow:0 0 20px #f00,0 0 40px #0f0;
+      position:relative;
+      z-index:5;
     }
     .container h2 {
-      color:#ff595e;
+      color:#f00;
       margin-bottom:1rem;
-      text-shadow:1px 1px 3px rgba(0,0,0,0.3);
+      animation:blink 0.5s infinite;
     }
-    .container p {margin-bottom:1rem;color:#444;}
+    @keyframes blink {
+      0%,100% {opacity:1;}
+      50% {opacity:0;}
+    }
+    .container p {color:#0f0;}
 
     /* Tombol */
     .btn {
-      background:#8ac926;color:#fff;
+      background:#200;
+      color:#0f0;
       padding:12px 20px;
       margin:5px;
-      border:none;border-radius:25px;
-      font-size:1rem;font-weight:bold;
+      border:2px solid #f00;
+      border-radius:5px;
+      font-size:1rem;
+      font-weight:bold;
       cursor:pointer;
-      box-shadow:0 4px 0 #5a8c1a;
-      transition:all 0.3s ease;
+      box-shadow:0 0 10px #f00;
+      transition:all 0.2s ease;
     }
-    .btn:hover {background:#70e000;transform:scale(1.05);}
+    .btn:hover {
+      background:#400;
+      color:#fff;
+      box-shadow:0 0 20px #0f0,0 0 40px #f00;
+    }
     a.back {
       display:inline-block;margin-top:20px;
-      padding:10px 15px;background:#ffb703;
-      color:#000;text-decoration:none;
-      border-radius:10px;font-weight:bold;
-      box-shadow:0 3px 6px rgba(0,0,0,0.3);
+      padding:10px 15px;background:#300;
+      color:#0f0;text-decoration:none;
+      border:2px solid #f00;
+      border-radius:5px;font-weight:bold;
+      box-shadow:0 0 10px #f00;
     }
-    a.back:hover {background:#ffa500;}
+    a.back:hover {background:#500;color:#fff;}
 
-    /* Tombol Musik */
+    /* Musik Tombol */
     #musicBtn {
       margin-top:15px;
-      background:#3b82f6;color:#fff;
+      background:#300;
+      color:#0f0;
       padding:10px 20px;
-      border:none;border-radius:25px;
-      font-size:1rem;font-weight:bold;
+      border:2px solid #f00;
+      border-radius:5px;
+      font-size:1rem;
+      font-weight:bold;
       cursor:pointer;
-      box-shadow:0 4px 0 #1e40af;
-      transition:all 0.3s ease;
+      box-shadow:0 0 10px #f00;
     }
-    #musicBtn:hover {background:#2563eb;transform:scale(1.05);}
+    #musicBtn:hover {background:#500;color:#fff;}
 
-    /* Grid Foto */
+    /* Foto Grid */
     .photo-grid {
       margin-top:2rem;
       display:grid;
@@ -119,49 +114,76 @@
       gap:1rem;
     }
     .photo-card {
-      background:rgba(255,255,255,0.6);
+      background:rgba(0,0,0,0.8);
       padding:10px;
-      border-radius:12px;
-      box-shadow:0 4px 8px rgba(0,0,0,0.2);
-      transition:transform 0.3s ease;
+      border:2px solid #f00;
+      border-radius:8px;
+      box-shadow:0 0 10px #f00;
+      animation:imgGlitch 0.5s infinite;
     }
     .photo-card img {
       width:100%;
-      border-radius:10px;
-      border:3px solid #fff;
+      border-radius:5px;
+      filter:grayscale(40%) contrast(120%);
     }
-    .photo-card:hover {transform:scale(1.05);}
+    @keyframes imgGlitch {
+      0% {transform:translate(0);}
+      25% {transform:translate(2px);}
+      50% {transform:translate(-2px);}
+      75% {transform:translate(1px);}
+      100% {transform:translate(0);}
+    }
+
+    /* Static Noise */
+    .noise {
+      position:fixed;
+      top:0;left:0;width:100%;height:100%;
+      background:url('https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif');
+      opacity:0.08;
+      z-index:1;
+      pointer-events:none;
+    }
+
+    /* Error Text */
+    .error-text {
+      position:absolute;
+      font-size:14px;
+      color:#0f0;
+      opacity:0;
+      white-space:nowrap;
+      z-index:2;
+      text-shadow:0 0 5px #f00,0 0 10px #0f0;
+      animation:fadeMove 3s linear forwards;
+    }
+    @keyframes fadeMove {
+      0% {opacity:0;transform:translateY(0);}
+      10% {opacity:1;}
+      90% {opacity:1;}
+      100% {opacity:0;transform:translateY(-30px);}
+    }
   </style>
 </head>
 <body>
-  <!-- Matahari & Paus & Ombak -->
-  <div class="sun"></div>
-  <div class="whale"></div>
-  <div class="waves">
-    <div class="wave"></div>
-    <div class="wave"></div>
-    <div class="wave"></div>
-  </div>
+  <!-- Static Noise -->
+  <div class="noise"></div>
 
   <!-- Header -->
   <header>
-    <h1>💥 DDOS Tools</h1>
+    <h1>⚠ DDOS VIRUS ATTACK ⚠</h1>
   </header>
 
-  <!-- Konten -->
   <div class="container">
-    <h2>⚠️ Warning!</h2>
-    <p>Halaman ini hanya untuk pembelajaran tentang keamanan jaringan,dan halaman ini untuk situs yang saya ddos.</p>
+    <h2>SYSTEM BREACHED!</h2>
+    <p>Halaman Ini untuk saya memperlihatkan serangan ddos saya ke website tertentu.</p>
     <button class="btn" onclick="alert('Simulasi DDOS dijalankan!')">▶ Start Attack</button>
     <button class="btn" onclick="alert('Serangan dihentikan.')">⏹ Stop Attack</button>
     <br><br>
-    <!-- Tombol Musik -->
     <button id="musicBtn">🎵 Stop Music</button>
     <audio id="bgMusic" autoplay loop>
       <source src="https://files.catbox.moe/1dt5po.mp3" type="audio/mp3">
     </audio>
 
-    <!-- Grid Foto 4 Slot -->
+    <!-- Foto -->
     <div class="photo-grid">
       <div class="photo-card"><img src="https://files.catbox.moe/ffadzs.jpg" alt="Foto 1"></div>
       <div class="photo-card"><img src="https://files.catbox.moe/qehydg.jpg" alt="Foto 2"></div>
@@ -171,13 +193,15 @@
 
     <br>
     <a href="index.html" class="back">⬅ Kembali ke Menu Utama</a>
+    <br>
+    <a href="portofolio.html" class="back">⬅ Kembali ke Portofolio</a>
   </div>
 
   <script>
+    // Musik
     const music = document.getElementById('bgMusic');
     const musicBtn = document.getElementById('musicBtn');
     let isPlaying = true;
-
     musicBtn.addEventListener('click', ()=>{
       if(isPlaying){
         music.pause();
@@ -189,6 +213,32 @@
         isPlaying = true;
       }
     });
+
+    // Error Text Generator
+    const errors = [
+      "ERROR 404: SYSTEM CRASH",
+      "PACKET LOSS DETECTED",
+      "WARNING: OVERLOAD",
+      "MALWARE INJECTION",
+      "DATA BREACH ALERT",
+      "DDOS STREAM ACTIVE",
+      "🔥 SYSTEM FAILURE 🔥",
+      "ACCESS DENIED",
+      "INTRUSION DETECTED",
+      "SERVER TIMEOUT"
+    ];
+
+    function spawnError(){
+      const div = document.createElement('div');
+      div.className = 'error-text';
+      div.innerText = errors[Math.floor(Math.random()*errors.length)];
+      div.style.top = Math.random()*document.body.scrollHeight + "px";
+      div.style.left = Math.random()*window.innerWidth + "px";
+      div.style.color = Math.random()>0.5 ? "#f00" : "#0f0";
+      document.body.appendChild(div);
+      setTimeout(()=>div.remove(),3000);
+    }
+    setInterval(spawnError, 500);
   </script>
 </body>
 </html>
