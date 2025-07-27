@@ -1,4 +1,136 @@
-<script>
-<!-- code by https://www.html-code-generator.com -->
-document.write(unescape('%3C%21DOCTYPE%20html%3E%0A%3Chtml%20lang%3D%22en%22%3E%0A%3Chead%3E%0A%20%20%3Cmeta%20charset%3D%22UTF-8%22%3E%0A%20%20%3Cmeta%20name%3D%22viewport%22%20content%3D%22width%3Ddevice-width%2C%20initial-scale%3D1.0%22%3E%0A%20%20%3Ctitle%3EPayment%3C/title%3E%0A%20%20%3Cstyle%3E%0A%20%20%20%20body%20%7B%0A%20%20%20%20%20%20background%3A%230f172a%3Bcolor%3Awhite%3Bfont-family%3A%27Segoe%20UI%27%2Csans-serif%3B%0A%20%20%20%20%20%20display%3Aflex%3Bflex-direction%3Acolumn%3Balign-items%3Acenter%3Bjustify-content%3Acenter%3B%0A%20%20%20%20%20%20height%3A100vh%3Btext-align%3Acenter%3B%0A%20%20%20%20%7D%0A%20%20%20%20h1%20%7Bcolor%3A%2338bdf8%3Bmargin-bottom%3A10px%3B%7D%0A%20%20%20%20.pay-option%20%7B%0A%20%20%20%20%20%20background%3A%231e293b%3Bpadding%3A20px%3Bmargin%3A10px%3Bborder-radius%3A12px%3B%0A%20%20%20%20%20%20width%3A250px%3Bcursor%3Apointer%3Btransition%3Abackground%200.3s%20ease%3B%0A%20%20%20%20%7D%0A%20%20%20%20.pay-option%3Ahover%20%7Bbackground%3A%23334155%3B%7D%0A%20%20%20%20.pay-option%20img%20%7Bwidth%3A100%25%3Bborder-radius%3A8px%3B%7D%0A%20%20%20%20a%20%7B%0A%20%20%20%20%20%20display%3Ainline-block%3Bmargin-top%3A20px%3Bpadding%3A10px%2015px%3Bbackground%3A%2338bdf8%3B%0A%20%20%20%20%20%20color%3A%230f172a%3Btext-decoration%3Anone%3Bborder-radius%3A8px%3Bfont-weight%3Abold%3B%0A%20%20%20%20%7D%0A%20%20%20%20a%3Ahover%20%7Bbackground%3A%230ea5e9%3B%7D%0A%20%20%3C/style%3E%0A%3C/head%3E%0A%3Cbody%3E%0A%20%20%3Ch1%3E%uD83D%uDCB3%20Payment%20Page%3C/h1%3E%0A%20%20%3Cp%3EPilih%20metode%20pembayaran%3A%3C/p%3E%0A%20%20%3C%21--%20Opsi%20Dana%20--%3E%0A%20%20%3Cdiv%20class%3D%22pay-option%22%3E%0A%20%20%20%20%3Ch3%3EDANA%3C/h3%3E%0A%20%20%20%20%3Cimg%20src%3D%22https%3A//files.catbox.moe/7uu4pn.jpg%22%20alt%3D%22Dana%22%3E%0A%20%20%20%20%3Cp%3EPAKE%20QR%20YG%20DI%20BAWAH%20AJA%3C/p%3E%0A%20%20%3C/div%3E%0A%20%20%3C%21--%20Opsi%20QRIS%20DANA%20--%3E%0A%20%20%3Cdiv%20class%3D%22pay-option%22%3E%0A%20%20%20%20%3Ch3%3EQRIS%3C/h3%3E%0A%20%20%20%20%3Cimg%20src%3D%22https%3A//files.catbox.moe/lol5mt.jpg%22%20alt%3D%22QRIS%22%3E%0A%20%20%20%20%3Cp%3EScan%20untuk%20membayar%20via%20QRIS%3C/p%3E%0A%20%20%3C/div%3E%0A%20%20%3Ca%20href%3D%22index.html%22%3E%u2B05%20Kembali%20ke%20Menu%20Utama%3C/a%3E%0A%3C/body%3E%0A%3C/html%3E'));
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment</title>
+  <style>
+    * {margin:0;padding:0;box-sizing:border-box;}
+    body {
+      background:linear-gradient(#87ceeb, #fefefe);
+      font-family:'Segoe UI',sans-serif;color:#333;
+      display:flex;flex-direction:column;align-items:center;
+      justify-content:flex-start;min-height:100vh;text-align:center;
+      overflow:hidden;position:relative;
+    }
+    h1 {color:#ff6b6b;margin-top:20px;text-shadow:2px 2px #fff;}
+    p {margin-bottom:10px;}
+
+    /* Payment Card */
+    .pay-option {
+      background:rgba(255,255,255,0.8);padding:20px;margin:10px;border-radius:15px;
+      width:250px;cursor:pointer;transition:transform 0.3s;
+      box-shadow:0 4px 8px rgba(0,0,0,0.2);
+      z-index:10;
+    }
+    .pay-option:hover {transform:scale(1.05);}
+    .pay-option img {width:100%;border-radius:10px;}
+    a {
+      display:inline-block;margin:20px;padding:10px 15px;background:#ffb703;
+      color:#000;text-decoration:none;border-radius:10px;font-weight:bold;
+      box-shadow:0 3px 6px rgba(0,0,0,0.3);
+      z-index:10;
+    }
+    a:hover {background:#ffa500;}
+
+    /* Awan */
+    .cloud {
+      position:absolute;top:50px;width:120px;height:60px;
+      background:rgba(255,255,255,0.5);border-radius:50px;
+      animation:moveClouds 60s linear infinite;
+    }
+    .cloud::before,.cloud::after {
+      content:"";position:absolute;background:rgba(255,255,255,0.5);
+      width:100px;height:60px;border-radius:50px;
+    }
+    .cloud::before {top:-20px;left:10px;}
+    .cloud::after {top:-10px;left:60px;}
+    @keyframes moveClouds {
+      0% {left:-200px;}
+      100% {left:110%;}
+    }
+
+    /* Matahari */
+    .sun {
+      position:absolute;top:20px;right:30px;width:100px;height:100px;
+      background:rgba(255,221,0,0.6);border-radius:50%;
+      box-shadow:0 0 40px rgba(255,221,0,0.5);
+      animation:spin 20s linear infinite;
+    }
+    @keyframes spin {
+      0% {transform:rotate(0deg);}
+      100% {transform:rotate(360deg);}
+    }
+
+    /* Hewan */
+    .animal {
+      position:absolute;bottom:0;width:120px;opacity:0.6;
+      animation:floaty 6s ease-in-out infinite alternate;
+    }
+    .cat {left:10%;animation-delay:0s;}
+    .lion {left:40%;animation-delay:1s;}
+    .whale {left:70%;width:180px;animation-delay:2s;}
+
+    @keyframes floaty {
+      0% {transform:translateY(0);}
+      100% {transform:translateY(-20px);}
+    }
+
+    /* Tombol Musik */
+    .music-controls {
+      margin:10px 0;
+      background:rgba(255,255,255,0.7);padding:8px 12px;border-radius:12px;
+      box-shadow:0 3px 6px rgba(0,0,0,0.3);z-index:20;
+    }
+    .music-controls button {
+      background:#ff6b6b;border:none;padding:6px 12px;margin:5px;
+      border-radius:8px;color:#fff;font-weight:bold;cursor:pointer;
+    }
+    .music-controls button:hover {background:#ff4757;}
+  </style>
+</head>
+<body>
+  <!-- Elemen Hiasan -->
+  <div class="sun"></div>
+  <div class="cloud" style="animation-delay:0s;"></div>
+  <div class="cloud" style="top:100px;animation-delay:15s;"></div>
+  <div class="cloud" style="top:150px;animation-delay:30s;"></div>
+
+  <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" class="animal cat" alt="Cat">
+  <img src="https://cdn-icons-png.flaticon.com/512/616/616430.png" class="animal lion" alt="Lion">
+  <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" class="animal whale" alt="Whale">
+
+  <!-- Konten -->
+  <h1>💳 Payment Page</h1>
+
+  <!-- Tombol Musik di bawah judul -->
+  <div class="music-controls">
+    <button onclick="playMusic()">▶ Play</button>
+    <button onclick="stopMusic()">⏹ Stop</button>
+  </div>
+
+  <p>Pilih metode pembayaran:</p>
+
+  <div class="pay-option">
+    <h3>DANA</h3>
+    <img src="https://files.catbox.moe/7uu4pn.jpg" alt="Dana">
+    <p>PAKE QR YG DI BAWAH AJA</p>
+  </div>
+
+  <div class="pay-option">
+    <h3>QRIS</h3>
+    <img src="https://files.catbox.moe/lol5mt.jpg" alt="QRIS">
+    <p>Scan untuk membayar via QRIS</p>
+  </div>
+
+  <a href="index.html">⬅ Kembali ke Menu Utama</a>
+
+  <audio id="bg-music" src="https://files.catbox.moe/1dt5po.mp3" autoplay loop></audio>
+
+  <script>
+    const music = document.getElementById('bg-music');
+    function playMusic(){ music.play(); }
+    function stopMusic(){ music.pause(); music.currentTime = 0; }
+  </script>
+</body>
+</html>
