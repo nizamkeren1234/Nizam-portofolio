@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DDOS Tools</title>
+  <style>
+    * {margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+    body {
+      background:linear-gradient(#87ceeb,#fef6e4);
+      color:#333;text-align:center;
+      overflow-x:hidden;
+    }
+
+    /* Matahari */
+    .sun {
+      position:absolute;top:20px;right:40px;
+      width:120px;height:120px;
+      background:#ffdd00;border-radius:50%;
+      box-shadow:0 0 40px #ffea85;
+      animation:spin 20s linear infinite;
+    }
+    @keyframes spin {0%{transform:rotate(0);}100%{transform:rotate(360deg);}}
+
+    /* Paus */
+    .whale {
+      position:fixed;bottom:60px;left:-300px;
+      width:250px;height:120px;background:#4ea8de;
+      border-radius:50% 50% 40% 40%;
+      animation:swim 40s linear infinite;
+    }
+    @keyframes swim {
+      0% {left:-300px;transform:translateY(0);}
+      50% {left:60%;transform:translateY(-30px);}
+      100% {left:110%;transform:translateY(0);}
+    }
+
+    /* Ombak */
+    .waves {
+      position:fixed;bottom:0;left:0;width:100%;height:100px;
+      background:#4ea8de;overflow:hidden;
+    }
+    .wave {
+      position:absolute;bottom:0;width:200%;height:100px;
+      background:rgba(255,255,255,0.4);
+      border-radius:100%;
+      animation:waveMove 10s linear infinite;
+    }
+    .wave:nth-child(2){animation-duration:14s;opacity:0.6;}
+    .wave:nth-child(3){animation-duration:18s;opacity:0.3;}
+    @keyframes waveMove {0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+    /* Header */
+    header {
+      background:#ffca3a;padding:1rem;
+      border-bottom:5px solid #fff;
+      box-shadow:0 5px 0 #e36414;
+    }
+    header h1 {
+      color:#fff;font-size:2rem;
+      text-shadow:2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    /* Konten */
+    .container {
+      margin-top:2rem;
+      background:rgba(255,255,255,0.7);
+      display:inline-block;
+      padding:2rem;
+      border-radius:15px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    }
+    .container h2 {
+      color:#ff595e;
+      margin-bottom:1rem;
+      text-shadow:1px 1px 3px rgba(0,0,0,0.3);
+    }
+    .container p {margin-bottom:1rem;color:#444;}
+
+    /* Tombol */
+    .btn {
+      background:#8ac926;color:#fff;
+      padding:12px 20px;
+      margin:5px;
+      border:none;border-radius:25px;
+      font-size:1rem;font-weight:bold;
+      cursor:pointer;
+      box-shadow:0 4px 0 #5a8c1a;
+      transition:all 0.3s ease;
+    }
+    .btn:hover {background:#70e000;transform:scale(1.05);}
+    a.back {
+      display:inline-block;margin-top:20px;
+      padding:10px 15px;background:#ffb703;
+      color:#000;text-decoration:none;
+      border-radius:10px;font-weight:bold;
+      box-shadow:0 3px 6px rgba(0,0,0,0.3);
+    }
+    a.back:hover {background:#ffa500;}
+
+    /* Tombol Musik */
+    #musicBtn {
+      margin-top:15px;
+      background:#3b82f6;color:#fff;
+      padding:10px 20px;
+      border:none;border-radius:25px;
+      font-size:1rem;font-weight:bold;
+      cursor:pointer;
+      box-shadow:0 4px 0 #1e40af;
+      transition:all 0.3s ease;
+    }
+    #musicBtn:hover {background:#2563eb;transform:scale(1.05);}
+
+    /* Grid Foto */
+    .photo-grid {
+      margin-top:2rem;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:1rem;
+    }
+    .photo-card {
+      background:rgba(255,255,255,0.6);
+      padding:10px;
+      border-radius:12px;
+      box-shadow:0 4px 8px rgba(0,0,0,0.2);
+      transition:transform 0.3s ease;
+    }
+    .photo-card img {
+      width:100%;
+      border-radius:10px;
+      border:3px solid #fff;
+    }
+    .photo-card:hover {transform:scale(1.05);}
+  </style>
+</head>
+<body>
+  <!-- Matahari & Paus & Ombak -->
+  <div class="sun"></div>
+  <div class="whale"></div>
+  <div class="waves">
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <h1>💥 DDOS Tools</h1>
+  </header>
+
+  <!-- Konten -->
+  <div class="container">
+    <h2>⚠️ Warning!</h2>
+    <p>Halaman ini hanya untuk pembelajaran tentang keamanan jaringan. Jangan gunakan untuk merusak situs orang lain.</p>
+    <button class="btn" onclick="alert('Simulasi DDOS dijalankan!')">▶ Start Attack</button>
+    <button class="btn" onclick="alert('Serangan dihentikan.')">⏹ Stop Attack</button>
+    <br><br>
+    <!-- Tombol Musik -->
+    <button id="musicBtn">🎵 Stop Music</button>
+    <audio id="bgMusic" autoplay loop>
+      <source src="https://files.catbox.moe/1dt5po.mp3" type="audio/mp3">
+    </audio>
+
+    <!-- Grid Foto 4 Slot -->
+    <div class="photo-grid">
+      <div class="photo-card"><img src="https://files.catbox.moe/ffadzs.jpg" alt="Foto 1"></div>
+      <div class="photo-card"><img src="https://files.catbox.moe/qehydg.jpg" alt="Foto 2"></div>
+      <div class="photo-card"><img src="https://files.catbox.moe/en7bbt.jpg" alt="Foto 3"></div>
+      <div class="photo-card"><img src="https://files.catbox.moe/zmeicd.jpg" alt="Foto 4"></div>
+    </div>
+
+    <br>
+    <a href="index.html" class="back">⬅ Kembali ke Menu Utama</a>
+  </div>
+
+  <script>
+    const music = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    let isPlaying = true;
+
+    musicBtn.addEventListener('click', ()=>{
+      if(isPlaying){
+        music.pause();
+        musicBtn.textContent = "🎵 Play Music";
+        isPlaying = false;
+      }else{
+        music.play();
+        musicBtn.textContent = "🎵 Stop Music";
+        isPlaying = true;
+      }
+    });
+  </script>
+</body>
+</html>
