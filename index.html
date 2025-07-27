@@ -28,50 +28,7 @@
       z-index:1;
     }
     @keyframes spinSun {0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
-    /* Burung Kartun */
-    .bird {
-      position:absolute;
-      width:50px;
-      height:30px;
-      background:transparent;
-      animation:flyBird 30s linear infinite;
-      z-index:3;
-    }
-    .bird::before,
-    .bird::after {
-      content:"";
-      position:absolute;
-      width:50px;
-      height:20px;
-      border-top:5px solid #000;
-      border-radius:50%;
-    }
-    .bird::before {transform:rotate(20deg);}
-    .bird::after {transform:rotate(-20deg);}
-    @keyframes flyBird {
-      0% {left:-150px; top:50px; transform:scale(1);}
-      50% {left:50%; top:80px; transform:scale(1.2);}
-      100% {left:110%; top:40px; transform:scale(1);}
-    }
-    /* Kawanan Burung */
-    .flock {
-      position:absolute;
-      top:80px;
-      left:-200px;
-      animation:flyFlock 40s linear infinite;
-      z-index:3;
-    }
-    @keyframes flyFlock {
-      0% {left:-300px; top:100px;}
-      50% {left:50%; top:60px;}
-      100% {left:120%; top:140px;}
-    }
-    .flock .bird {
-      position:relative;
-      animation:none;
-      margin:0 20px;
-      transform:scale(0.7);
-    }
+
     /* Paus Kartun */
     .whale {
       position:fixed;
@@ -89,6 +46,7 @@
       50% {left:60%; transform:translateY(-30px);}
       100% {left:110%; transform:translateY(0);}
     }
+
     /* Ombak Animasi */
     .waves {
       position:fixed;
@@ -112,6 +70,7 @@
     .wave:nth-child(2) {animation-duration:14s;opacity:0.6;}
     .wave:nth-child(3) {animation-duration:18s;opacity:0.3;}
     @keyframes waveMove {0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
     /* Loading Screen */
     .loading-screen {
       position:fixed;width:100vw;height:100vh;background:#fcd5ce;
@@ -119,6 +78,7 @@
     }
     .loading-screen h1 {font-size:2.2em;color:#ff595e;text-shadow:2px 2px 4px rgba(0,0,0,0.3);}
     .loading-screen p {margin-top:10px;font-size:1.5em;color:#333;}
+
     /* Header Kartun */
     header {
       padding:1.5rem;
@@ -133,6 +93,7 @@
       font-size:2rem;color:#fff;
       text-shadow:2px 2px 4px rgba(0,0,0,0.3);
     }
+
     /* Tombol Kartun */
     .menu-btn, .music-btn, .next-btn, .prev-btn {
       background:#8ac926;
@@ -154,6 +115,7 @@
       transform:translateY(-4px) scale(1.07);
       box-shadow:0 6px 0 #4b8b00;
     }
+
     /* Section Kartun */
     section {padding:2rem;max-width:1200px;margin:auto;position:relative;z-index:2;}
     section h2 {
@@ -191,18 +153,13 @@
     <div class="wave"></div>
     <div class="wave"></div>
   </div>
-  <!-- Kawanan Burung -->
-  <div class="flock" style="animation-delay:5s;">
-    <div class="bird"></div>
-    <div class="bird" style="top:20px; left:40px;"></div>
-    <div class="bird" style="top:-15px; left:80px;"></div>
-    <div class="bird" style="top:10px; left:120px;"></div>
-  </div>
+
   <!-- Loading Screen -->
   <div class="loading-screen" id="loadingScreen">
     <h1>Nizam Portofolio's</h1>
     <p id="loadPercent">0%</p>
   </div>
+
   <!-- Header dengan tombol baru -->
   <header>
     <h1>Nizam's Portfolio'S</h1>
@@ -210,8 +167,8 @@
     <button class="menu-btn" onclick="window.location.href='sekola.html'"><span>🏫</span> Sekolah</button>
     <button class="menu-btn" onclick="window.location.href='mygirl.html'"><span>💖</span> MyGirlFriend</button>
     <button class="menu-btn" onclick="window.location.href='ai.html'"><span>🤖</span> AI</button>
-    <!-- ✅ Tombol Film Baru -->
-    <button class="menu-btn" onclick="window.location.href='film.html'"><span>🎬</span> Film</button>
+    <!-- ✅ Tombol DDOS Baru -->
+    <button class="menu-btn" onclick="window.location.href='ddos.html'"><span>💥</span> DDOS</button>
     <button class="prev-btn" id="prevBtn"><span>⏮</span> Prev</button>
     <button class="music-btn" id="musicBtn"><span id="musicIcon">🎵</span> Play</button>
     <button class="next-btn" id="nextBtn"><span>⏭</span> Next</button>
@@ -296,8 +253,7 @@
     // Musik Player
     const playlist = [
       "https://files.catbox.moe/1dt5po.mp3",
-      "https://files.catbox.moe/hprkl5.mp3",
-      "https://files.catbox.moe/xcbx3d.jpg"
+      "https://files.catbox.moe/hprkl5.mp3"
     ];
     let currentTrack = 0;
     const music = document.getElementById('bgMusic');
