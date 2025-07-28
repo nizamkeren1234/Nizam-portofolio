@@ -1,4 +1,293 @@
-<script>
-<!-- code by https://www.html-code-generator.com -->
-document.write(unescape('%3C%21DOCTYPE%20html%3E%0A%3Chtml%20lang%3D%22en%22%3E%0A%3Chead%3E%0A%20%20%3Cmeta%20charset%3D%22UTF-8%22%20/%3E%0A%20%20%3Cmeta%20name%3D%22viewport%22%20content%3D%22width%3Ddevice-width%2C%20initial-scale%3D1.0%22/%3E%0A%20%20%3Ctitle%3ENizam%20Portfolio%27s%3C/title%3E%0A%20%20%3Cstyle%3E%0A%20%20%20%20*%7Bmargin%3A0%3Bpadding%3A0%3Bbox-sizing%3Aborder-box%3Bfont-family%3A%27Segoe%20UI%27%2Csans-serif%3B%7D%0A%20%20%20%20body%7B%0A%20%20%20%20%20%20background%3Alinear-gradient%28135deg%2C%230f0c29%2C%23302b63%2C%2324243e%29%3B%0A%20%20%20%20%20%20background-size%3A400%25%20400%25%3B%0A%20%20%20%20%20%20animation%3AbgMove%2012s%20ease%20infinite%3B%0A%20%20%20%20%20%20color%3A%23e0e0e0%3Boverflow-x%3Ahidden%3Bposition%3Arelative%3B%0A%20%20%20%20%20%20transition%3Abackground%200.8s%20ease%2Ccolor%200.8s%20ease%3B%0A%20%20%20%20%7D%0A%20%20%20%20@keyframes%20bgMove%7B%0A%20%20%20%20%20%200%25%7Bbackground-position%3A0%25%2050%25%3B%7D%0A%20%20%20%20%20%2050%25%7Bbackground-position%3A100%25%2050%25%3B%7D%0A%20%20%20%20%20%20100%25%7Bbackground-position%3A0%25%2050%25%3B%7D%0A%20%20%20%20%7D%0A%20%20%20%20body.fade%7Bopacity%3A0%3Bfilter%3Ablur%2812px%29%3Btransform%3Ascale%281.05%29%3Btransition%3Aall%200.4s%20ease%3B%7D%0A%20%20%20%20/*%20%3D%3D%3D%20GAMING%20NEON%20MODE%20%3D%3D%3D%20*/%0A%20%20%20%20h1%2Ch2%2Ch3%7B%0A%20%20%20%20%20%20color%3A%2300fff7%3B%0A%20%20%20%20%20%20text-shadow%3A0%200%2012px%20%2300fff7%2C0%200%2024px%20%2300e6e6%2C0%200%2040px%20%2300b8ff%3B%0A%20%20%20%20%20%20transition%3Aall%200.5s%20ease%3B%0A%20%20%20%20%7D%0A%20%20%20%20%23neonParticles%7Bposition%3Afixed%3Btop%3A0%3Bleft%3A0%3Bwidth%3A100%25%3Bheight%3A100%25%3Bz-index%3A-1%3B%7D%0A%20%20%20%20/*%20%3D%3D%3D%20PASTEL%20ROMANTIS%20MODE%20%3D%3D%3D%20*/%0A%20%20%20%20body.pastel%7B%0A%20%20%20%20%20%20background%3Alinear-gradient%28135deg%2C%23ffdde1%2C%23ffb3c1%2C%23ffc8dd%29%3B%0A%20%20%20%20%20%20color%3A%234b2c3f%3B%0A%20%20%20%20%7D%0A%20%20%20%20body.pastel%20h1%2Cbody.pastel%20h2%2Cbody.pastel%20h3%7B%0A%20%20%20%20%20%20color%3A%23ff4d6d%3B%0A%20%20%20%20%20%20text-shadow%3A2px%202px%208px%20rgba%28255%2C100%2C150%2C0.5%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20.falling%7B%0A%20%20%20%20%20%20position%3Afixed%3Btop%3A-50px%3Bwidth%3A34px%3Bheight%3A34px%3B%0A%20%20%20%20%20%20background-size%3Acontain%3Bbackground-repeat%3Ano-repeat%3B%0A%20%20%20%20%20%20animation%3Afall%20linear%20infinite%3Bz-index%3A50%3Bopacity%3A0.85%3B%0A%20%20%20%20%7D%0A%20%20%20%20@keyframes%20fall%7B0%25%7Btransform%3AtranslateY%28-50px%29%20rotate%280deg%29%3B%7D100%25%7Btransform%3AtranslateY%28110vh%29%20rotate%28360deg%29%3B%7D%7D%0A%20%20%20%20/*%20%3D%3D%3D%20LIGHT/DARK%20%3D%3D%3D%20*/%0A%20%20%20%20body.light%7Bbackground%3Alinear-gradient%28%23ffffff%2C%23f2f2f2%29%3Bcolor%3A%23222%3B%7D%0A%20%20%20%20body.light%20h1%2Cbody.light%20h2%2Cbody.light%20h3%7Bcolor%3A%23ff4d6d%3B%7D%0A%20%20%20%20body.dark%7Bbackground%3A%23000%3Bcolor%3A%23f8f8f8%3B%7D%0A%20%20%20%20body.dark%20h1%2Cbody.dark%20h2%2Cbody.dark%20h3%7Bcolor%3A%23ff00ff%3B%7D%0A%20%20%20%20/*%20HEADER%20*/%0A%20%20%20%20header%7B%0A%20%20%20%20%20%20padding%3A1rem%3B%0A%20%20%20%20%20%20background%3Argba%2810%2C10%2C30%2C0.7%29%3B%0A%20%20%20%20%20%20display%3Aflex%3Bjustify-content%3Acenter%3Balign-items%3Acenter%3Bgap%3A12px%3Bflex-wrap%3Awrap%3B%0A%20%20%20%20%20%20border-bottom%3A3px%20solid%20rgba%280%2C255%2C255%2C0.4%29%3B%0A%20%20%20%20%20%20box-shadow%3A0%200%2020px%20%2300fff7%3B%0A%20%20%20%20%20%20backdrop-filter%3Ablur%2810px%29%3B%0A%20%20%20%20%20%20position%3Arelative%3Bz-index%3A5%3B%0A%20%20%20%20%20%20transition%3Aall%200.5s%20ease%3B%0A%20%20%20%20%7D%0A%20%20%20%20body.pastel%20header%7Bbackground%3Argba%28255%2C192%2C203%2C0.8%29%3Bborder-bottom%3A4px%20solid%20%23fff%3Bbox-shadow%3A0%204px%2020px%20rgba%28255%2C0%2C120%2C0.3%29%3B%7D%0A%20%20%20%20/*%20BUTTON%20*/%0A%20%20%20%20.menu-btn%2C.music-btn%2C.next-btn%2C.prev-btn%2C.toggle-btn%7B%0A%20%20%20%20%20%20background%3A%23ff4d6d%3Bborder%3A2px%20solid%20%23fff%3Bpadding%3A10px%2020px%3Bborder-radius%3A28px%3B%0A%20%20%20%20%20%20font-size%3A1rem%3Bcursor%3Apointer%3Bcolor%3A%23fff%3Bfont-weight%3Abold%3B%0A%20%20%20%20%20%20transition%3Aall%200.3s%20ease%3Bbox-shadow%3A0%200%2012px%20rgba%28255%2C77%2C109%2C0.8%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20.menu-btn%3Ahover%2C.music-btn%3Ahover%2C.next-btn%3Ahover%2C.prev-btn%3Ahover%2C.toggle-btn%3Ahover%7B%0A%20%20%20%20%20%20background%3A%23ff6f91%3Btransform%3Ascale%281.08%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20/*%20SECTION%20%26%20CARD%20*/%0A%20%20%20%20section%7B%0A%20%20%20%20%20%20padding%3A2.5rem%3B%0A%20%20%20%20%20%20max-width%3A1200px%3B%0A%20%20%20%20%20%20margin%3Aauto%3B%0A%20%20%20%20%20%20text-align%3Acenter%3B%0A%20%20%20%20%7D%0A%20%20%20%20section%20h2%7B%0A%20%20%20%20%20%20font-size%3A2rem%3B%0A%20%20%20%20%20%20margin-bottom%3A1.5rem%3B%0A%20%20%20%20%20%20transition%3Aall%200.5s%20ease%3B%0A%20%20%20%20%7D%0A%20%20%20%20.content%7B%0A%20%20%20%20%20%20display%3Aflex%3B%0A%20%20%20%20%20%20flex-wrap%3Awrap%3B%0A%20%20%20%20%20%20justify-content%3Acenter%3B%0A%20%20%20%20%20%20gap%3A1.8rem%3B%0A%20%20%20%20%7D%0A%20%20%20%20.card%7B%0A%20%20%20%20%20%20flex%3A1%201%20280px%3B%0A%20%20%20%20%20%20max-width%3A320px%3B%0A%20%20%20%20%20%20background%3Argba%2820%2C20%2C40%2C0.8%29%3B%0A%20%20%20%20%20%20border-radius%3A1.2rem%3B%0A%20%20%20%20%20%20padding%3A1.2rem%3B%0A%20%20%20%20%20%20text-align%3Acenter%3B%0A%20%20%20%20%20%20box-shadow%3A0%200%2022px%20rgba%280%2C255%2C255%2C0.3%29%3B%0A%20%20%20%20%20%20backdrop-filter%3Ablur%286px%29%3B%0A%20%20%20%20%20%20border%3A1px%20solid%20rgba%280%2C255%2C255%2C0.4%29%3B%0A%20%20%20%20%20%20transition%3Atransform%200.4s%20ease%2C%20background%200.4s%20ease%2C%20color%200.4s%20ease%3B%0A%20%20%20%20%7D%0A%20%20%20%20.card%3Ahover%7Btransform%3Ascale%281.06%29%3B%7D%0A%20%20%20%20.card%20img%7B%0A%20%20%20%20%20%20width%3A100%25%3B%0A%20%20%20%20%20%20max-height%3A250px%3B%0A%20%20%20%20%20%20object-fit%3Acover%3B%0A%20%20%20%20%20%20border-radius%3A1rem%3B%0A%20%20%20%20%20%20margin-bottom%3A0.8rem%3B%0A%20%20%20%20%20%20transition%3Atransform%200.4s%20ease%2C%20filter%200.4s%20ease%3B%0A%20%20%20%20%7D%0A%20%20%20%20.card%20img%3Ahover%7Btransform%3Ascale%281.05%29%3Bfilter%3Abrightness%281.1%29%3B%7D%0A%20%20%20%20.card%20h3%7Bmargin-top%3A0.5rem%3Bfont-size%3A1.4rem%3Btransition%3Aall%200.5s%20ease%3B%7D%0A%20%20%20%20.card%20p%7Bfont-size%3A1.05rem%3Bline-height%3A1.5%3Btransition%3Aall%200.5s%20ease%3B%7D%0A%20%20%20%20body.pastel%20.card%7B%0A%20%20%20%20%20%20background%3Argba%28255%2C255%2C255%2C0.85%29%3B%0A%20%20%20%20%20%20box-shadow%3A0%208px%2020px%20rgba%28255%2C0%2C120%2C0.3%29%3B%0A%20%20%20%20%7D%0A%20%20%3C/style%3E%0A%3C/head%3E%0A%3Cbody%3E%0A%20%20%3Ccanvas%20id%3D%22neonParticles%22%3E%3C/canvas%3E%0A%20%20%3C%21--%20HEADER%20--%3E%0A%20%20%3Cheader%3E%0A%20%20%20%20%3Ch1%3E%uD83C%uDFA8%20Nizam%27s%20Portfolio%20%uD83C%uDFAE%3C/h1%3E%0A%20%20%20%20%3Cbutton%20class%3D%22menu-btn%22%20onclick%3D%22window.location.href%3D%27payment.html%27%22%3E%uD83D%uDCB3%20Payment%3C/button%3E%0A%20%20%20%20%3Cbutton%20class%3D%22menu-btn%22%20onclick%3D%22window.location.href%3D%27sekola.html%27%22%3E%uD83C%uDFEB%20Sekolah%3C/button%3E%0A%20%20%20%20%3Cbutton%20class%3D%22menu-btn%22%20onclick%3D%22window.location.href%3D%27mygirl.html%27%22%3E%uD83D%uDC96%20MyGirlFriend%3C/button%3E%0A%20%20%20%20%3Cbutton%20class%3D%22menu-btn%22%20onclick%3D%22window.location.href%3D%27ai.html%27%22%3E%uD83E%uDD16%20AI%3C/button%3E%0A%20%20%20%20%3Cbutton%20class%3D%22menu-btn%22%20onclick%3D%22window.location.href%3D%27ddos.html%27%22%3E%uD83D%uDCA5%20DDOS%3C/button%3E%0A%20%20%20%20%3Cbutton%20class%3D%22prev-btn%22%20id%3D%22prevBtn%22%3E%u23EE%20Prev%3C/button%3E%0A%20%20%20%20%3Cbutton%20class%3D%22music-btn%22%20id%3D%22musicBtn%22%3E%uD83C%uDFB5%20Play%3C/button%3E%0A%20%20%20%20%3Cbutton%20class%3D%22next-btn%22%20id%3D%22nextBtn%22%3E%u23ED%20Next%3C/button%3E%0A%20%20%20%20%3Cbutton%20class%3D%22toggle-btn%22%20id%3D%22gamingToggle%22%3E%uD83C%uDFAE%20Neon%20Mode%3C/button%3E%0A%20%20%20%20%3Cbutton%20class%3D%22toggle-btn%22%20id%3D%22lightDarkToggle%22%3E%uD83C%uDF19%20Dark%20Mode%3C/button%3E%0A%20%20%20%20%3Caudio%20id%3D%22bgMusic%22%20loop%3E%3C/audio%3E%0A%20%20%3C/header%3E%0A%20%20%3C%21--%20About%20--%3E%0A%20%20%3Csection%3E%0A%20%20%20%20%3Ch2%3EAbout%20Me%3C/h2%3E%0A%20%20%20%20%3Cdiv%20class%3D%22content%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22card%22%3E%0A%20%20%20%20%20%20%20%20%3Cimg%20src%3D%22https%3A//files.catbox.moe/0hkdo9.jpg%22%20/%3E%0A%20%20%20%20%20%20%20%20%3Ch3%3EOlaa%2C%20I%u2019m%20Nizam%20%uD83D%uDCA5%3C/h3%3E%0A%20%20%20%20%20%20%20%20%3Cp%3EOlaa%2C%20my%20name%20is%20Nizam%2C%20I%27m%2014%20years%20old%20and%20in%209th%20grade.%20Passionate%20in%20technology%20%26%20design%20with%20modern%20creations.%20%uD83E%uDD68%3C/p%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%20%20%3C/section%3E%0A%20%20%3C%21--%20Projects%20--%3E%0A%20%20%3Csection%3E%0A%20%20%20%20%3Ch2%3EMy%20Projects%3C/h2%3E%0A%20%20%20%20%3Cdiv%20class%3D%22content%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22card%22%3E%0A%20%20%20%20%20%20%20%20%3Cimg%20src%3D%22https%3A//files.catbox.moe/ffadzs.jpg%22%20/%3E%0A%20%20%20%20%20%20%20%20%3Ch3%3EMoney%20%26%20Family%20%uD83D%uDCB0%3C/h3%3E%0A%20%20%20%20%20%20%20%20%3Cp%3EAku%20ingin%20sukses%20supaya%20bisa%20membahagiakan%20orang%20tua.%20%uD83E%uDD68%u2764%uFE0F%3C/p%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22card%22%3E%0A%20%20%20%20%20%20%20%20%3Cimg%20src%3D%22https%3A//files.catbox.moe/qehydg.jpg%22%20/%3E%0A%20%20%20%20%20%20%20%20%3Ch3%3EMobile%20App%20Design%3C/h3%3E%0A%20%20%20%20%20%20%20%20%3Cp%3EAplikasi%20mobile%20ringan%20dengan%20desain%20modern%uD83D%uDCA5%uD83E%uDD68.%3C/p%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%20%20%3C/section%3E%0A%20%20%3C%21--%20Skills%20--%3E%0A%20%20%3Csection%3E%0A%20%20%20%20%3Ch2%3EMy%20Skills%3C/h2%3E%0A%20%20%20%20%3Cdiv%20class%3D%22content%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22card%22%3E%0A%20%20%20%20%20%20%20%20%3Cimg%20src%3D%22https%3A//files.catbox.moe/1ipq20.jpg%22%20/%3E%0A%20%20%20%20%20%20%20%20%3Ch3%3EFrontend%3C/h3%3E%0A%20%20%20%20%20%20%20%20%3Cp%3EHTML%2C%20CSS%2C%20JavaScript%3C/p%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22card%22%3E%0A%20%20%20%20%20%20%20%20%3Cimg%20src%3D%22https%3A//files.catbox.moe/ptvpiq.jpg%22%20/%3E%0A%20%20%20%20%20%20%20%20%3Ch3%3EDDoS%3C/h3%3E%0A%20%20%20%20%20%20%20%20%3Cp%3ESimulasi%20serangan%20jaringan%20%28edukasi%20keamanan%20website%29%3C/p%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%20%20%3C/section%3E%0A%20%20%3C%21--%20Products%20--%3E%0A%20%20%3Csection%3E%0A%20%20%20%20%3Ch2%3EMy%20Products%3C/h2%3E%0A%20%20%20%20%3Cdiv%20class%3D%22content%22%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22card%22%3E%0A%20%20%20%20%20%20%20%20%3Cimg%20src%3D%22https%3A//files.catbox.moe/en7bbt.jpg%22%20/%3E%0A%20%20%20%20%20%20%20%20%3Ch3%3EMembuat%20Website%3C/h3%3E%0A%20%20%20%20%20%20%20%20%3Cp%3ETemplate%20website%20modern%20dengan%20desain%20minimalis%20dan%20modern.%3C/p%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%3Cdiv%20class%3D%22card%22%3E%0A%20%20%20%20%20%20%20%20%3Cimg%20src%3D%22https%3A//files.catbox.moe/zmeicd.jpg%22%20/%3E%0A%20%20%20%20%20%20%20%20%3Ch3%3EBug%20WA%3C/h3%3E%0A%20%20%20%20%20%20%20%20%3Cp%3EMengirimkan%20bug%20WA%20untuk%20testing%20keamanan%20aplikasi.%3C/p%3E%0A%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%3C/div%3E%0A%20%20%3C/section%3E%0A%20%20%3Cscript%3E%0A%20%20%20%20const%20gamingToggle%3Ddocument.getElementById%28%27gamingToggle%27%29%3B%0A%20%20%20%20const%20lightDarkToggle%3Ddocument.getElementById%28%27lightDarkToggle%27%29%3B%0A%20%20%20%20let%20isPastel%3Dfalse%3Blet%20isLight%3Dfalse%3B%0A%20%20%20%20function%20smoothChange%28callback%29%7B%0A%20%20%20%20%20%20document.body.classList.add%28%27fade%27%29%3B%0A%20%20%20%20%20%20setTimeout%28%28%29%3D%3E%7B%0A%20%20%20%20%20%20%20%20callback%28%29%3B%0A%20%20%20%20%20%20%20%20document.body.classList.remove%28%27fade%27%29%3B%0A%20%20%20%20%20%20%7D%2C400%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20/*%20%3D%3D%3D%20Musik%20%3D%3D%3D%20*/%0A%20%20%20%20const%20playlist%3D%5B%0A%20%20%20%20%20%20%22https%3A//files.catbox.moe/1dt5po.mp3%22%2C%0A%20%20%20%20%20%20%22https%3A//files.catbox.moe/hprkl5.mp3%22%2C%0A%20%20%20%20%20%20%22https%3A//files.catbox.moe/17ni1h.mp4%22%2C%0A%20%20%20%20%20%20%22https%3A//files.catbox.moe/5qv17i.m4a%22%2C%0A%20%20%20%20%20%20%22https%3A//files.catbox.moe/drurhl.mp4%22%0A%20%20%20%20%5D%3B%0A%20%20%20%20let%20currentTrack%3D0%3B%0A%20%20%20%20const%20music%3Ddocument.getElementById%28%27bgMusic%27%29%3B%0A%20%20%20%20const%20musicBtn%3Ddocument.getElementById%28%27musicBtn%27%29%3B%0A%20%20%20%20let%20isPlaying%3Dfalse%3B%0A%20%20%20%20function%20loadTrack%28i%29%7Bmusic.src%3Dplaylist%5Bi%5D%3Bif%28isPlaying%29%20music.play%28%29%3B%7D%0A%20%20%20%20loadTrack%28currentTrack%29%3B%0A%20%20%20%20function%20playMusic%28%29%7B%0A%20%20%20%20%20%20if%28%21isPlaying%29%7B%0A%20%20%20%20%20%20%20%20music.play%28%29%3B%0A%20%20%20%20%20%20%20%20musicBtn.innerText%3D%22%uD83C%uDFB5%20Stop%22%3B%0A%20%20%20%20%20%20%20%20isPlaying%3Dtrue%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%20%20function%20stopMusic%28%29%7B%0A%20%20%20%20%20%20music.pause%28%29%3Bmusic.currentTime%3D0%3B%0A%20%20%20%20%20%20musicBtn.innerText%3D%22%uD83C%uDFB5%20Play%22%3B%0A%20%20%20%20%20%20isPlaying%3Dfalse%3B%0A%20%20%20%20%7D%0A%20%20%20%20musicBtn.addEventListener%28%27click%27%2C%28%29%3D%3E%7Bif%28%21isPlaying%29%7BplayMusic%28%29%3B%7Delse%7BstopMusic%28%29%3B%7D%7D%29%3B%0A%20%20%20%20document.getElementById%28%27nextBtn%27%29.onclick%3D%28%29%3D%3E%7BcurrentTrack%3D%28currentTrack+1%29%25playlist.length%3BloadTrack%28currentTrack%29%3B%7D%3B%0A%20%20%20%20document.getElementById%28%27prevBtn%27%29.onclick%3D%28%29%3D%3E%7BcurrentTrack%3D%28currentTrack-1+playlist.length%29%25playlist.length%3BloadTrack%28currentTrack%29%3B%7D%3B%0A%20%20%20%20/*%20%3D%3D%3D%20Toggle%20Gaming/Pastel%20%3D%3D%3D%20*/%0A%20%20%20%20gamingToggle.addEventListener%28%27click%27%2C%28%29%3D%3E%7B%0A%20%20%20%20%20%20smoothChange%28%28%29%3D%3E%7B%0A%20%20%20%20%20%20%20%20isPastel%3D%21isPastel%3B%0A%20%20%20%20%20%20%20%20if%28isPastel%29%7B%0A%20%20%20%20%20%20%20%20%20%20document.body.classList.add%28%27pastel%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20gamingToggle.textContent%3D%22%uD83D%uDC96%20Pastel%20Mode%22%3B%0A%20%20%20%20%20%20%20%20%20%20spawnFalling%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20playMusic%28%29%3B%0A%20%20%20%20%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20document.body.classList.remove%28%27pastel%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20gamingToggle.textContent%3D%22%uD83C%uDFAE%20Neon%20Mode%22%3B%0A%20%20%20%20%20%20%20%20%20%20clearFalling%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20playMusic%28%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%29%3B%0A%20%20%20%20%7D%29%3B%0A%20%20%20%20/*%20%3D%3D%3D%20Toggle%20Light/Dark%20%3D%3D%3D%20*/%0A%20%20%20%20lightDarkToggle.addEventListener%28%27click%27%2C%28%29%3D%3E%7B%0A%20%20%20%20%20%20smoothChange%28%28%29%3D%3E%7B%0A%20%20%20%20%20%20%20%20isLight%3D%21isLight%3B%0A%20%20%20%20%20%20%20%20if%28isLight%29%7B%0A%20%20%20%20%20%20%20%20%20%20document.body.classList.remove%28%27dark%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20document.body.classList.add%28%27light%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20lightDarkToggle.textContent%3D%22%u2600%uFE0F%20Light%20Mode%22%3B%0A%20%20%20%20%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20document.body.classList.remove%28%27light%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20document.body.classList.add%28%27dark%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20lightDarkToggle.textContent%3D%22%uD83C%uDF19%20Dark%20Mode%22%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%29%3B%0A%20%20%20%20%7D%29%3B%0A%20%20%20%20/*%20%3D%3D%3D%20Partikel%20Neon%20%3D%3D%3D%20*/%0A%20%20%20%20const%20canvas%3Ddocument.getElementById%28%27neonParticles%27%29%3B%0A%20%20%20%20const%20ctx%3Dcanvas.getContext%28%272d%27%29%3B%0A%20%20%20%20let%20particles%3D%5B%5D%3B%0A%20%20%20%20function%20resizeCanvas%28%29%7Bcanvas.width%3Dwindow.innerWidth%3Bcanvas.height%3Dwindow.innerHeight%3B%7D%0A%20%20%20%20window.addEventListener%28%27resize%27%2CresizeCanvas%29%3BresizeCanvas%28%29%3B%0A%20%20%20%20function%20createParticles%28%29%7B%0A%20%20%20%20%20%20particles%3D%5B%5D%3B%0A%20%20%20%20%20%20for%28let%20i%3D0%3Bi%3C80%3Bi++%29%7B%0A%20%20%20%20%20%20%20%20particles.push%28%7Bx%3AMath.random%28%29*canvas.width%2Cy%3AMath.random%28%29*canvas.height%2Cr%3AMath.random%28%29*3+1%2Cdx%3A%28Math.random%28%29-0.5%29*0.6%2Cdy%3A%28Math.random%28%29-0.5%29*0.6%2Ccolor%3A%60hsl%28%24%7BMath.random%28%29*360%7D%2C100%25%2C60%25%29%60%7D%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%20%20createParticles%28%29%3B%0A%20%20%20%20function%20animateParticles%28%29%7B%0A%20%20%20%20%20%20ctx.clearRect%280%2C0%2Ccanvas.width%2Ccanvas.height%29%3B%0A%20%20%20%20%20%20if%28%21isPastel%29%7B%0A%20%20%20%20%20%20%20%20particles.forEach%28p%3D%3E%7B%0A%20%20%20%20%20%20%20%20%20%20ctx.beginPath%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20ctx.arc%28p.x%2Cp.y%2Cp.r%2C0%2CMath.PI*2%29%3B%0A%20%20%20%20%20%20%20%20%20%20ctx.fillStyle%3Dp.color%3B%0A%20%20%20%20%20%20%20%20%20%20ctx.shadowBlur%3D20%3Bctx.shadowColor%3Dp.color%3B%0A%20%20%20%20%20%20%20%20%20%20ctx.fill%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20p.x+%3Dp.dx%3Bp.y+%3Dp.dy%3B%0A%20%20%20%20%20%20%20%20%20%20if%28p.x%3C0%7C%7Cp.x%3Ecanvas.width%29p.dx*%3D-1%3B%0A%20%20%20%20%20%20%20%20%20%20if%28p.y%3C0%7C%7Cp.y%3Ecanvas.height%29p.dy*%3D-1%3B%0A%20%20%20%20%20%20%20%20%7D%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20requestAnimationFrame%28animateParticles%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20animateParticles%28%29%3B%0A%20%20%20%20/*%20%3D%3D%3D%20Love%20%26%20Bunga%20Pastel%20%3D%3D%3D%20*/%0A%20%20%20%20const%20icons%3D%5B%22https%3A//cdn-icons-png.flaticon.com/512/833/833472.png%22%2C%22https%3A//cdn-icons-png.flaticon.com/512/1752/1752892.png%22%2C%22https%3A//cdn-icons-png.flaticon.com/512/1752/1752888.png%22%5D%3B%0A%20%20%20%20let%20fallInterval%3B%0A%20%20%20%20function%20spawnFalling%28%29%7B%0A%20%20%20%20%20%20clearInterval%28fallInterval%29%3B%0A%20%20%20%20%20%20fallInterval%3DsetInterval%28%28%29%3D%3E%7B%0A%20%20%20%20%20%20%20%20let%20f%3Ddocument.createElement%28%27div%27%29%3B%0A%20%20%20%20%20%20%20%20f.className%3D%27falling%27%3B%0A%20%20%20%20%20%20%20%20f.style.left%3DMath.random%28%29*100+%27vw%27%3B%0A%20%20%20%20%20%20%20%20f.style.animationDuration%3D%285+Math.random%28%29*5%29+%27s%27%3B%0A%20%20%20%20%20%20%20%20f.style.backgroundImage%3D%60url%28%24%7Bicons%5BMath.floor%28Math.random%28%29*icons.length%29%5D%7D%29%60%3B%0A%20%20%20%20%20%20%20%20document.body.appendChild%28f%29%3B%0A%20%20%20%20%20%20%20%20setTimeout%28%28%29%3D%3Ef.remove%28%29%2C10000%29%3B%0A%20%20%20%20%20%20%7D%2C400%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20function%20clearFalling%28%29%7BclearInterval%28fallInterval%29%3Bdocument.querySelectorAll%28%27.falling%27%29.forEach%28e%3D%3Ee.remove%28%29%29%3B%7D%0A%20%20%3C/script%3E%0A%3C/body%3E%0A%3C/html%3E'));
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nizam Portfolio's</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+
+    /* === LOADING SCREEN GAMING NEON === */
+    #loadingScreen{
+      position:fixed;top:0;left:0;width:100%;height:100%;
+      background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+      display:flex;flex-direction:column;justify-content:center;align-items:center;
+      z-index:9999;overflow:hidden;
+      animation:bgMove 12s ease infinite;
+    }
+    #loadingLogo{
+      width:120px;height:120px;
+      border:4px solid #00fff7;border-radius:50%;
+      display:flex;justify-content:center;align-items:center;
+      color:#00fff7;font-size:2rem;font-weight:bold;
+      text-shadow:0 0 12px #00fff7,0 0 24px #00e6e6;
+      box-shadow:0 0 20px #00fff7 inset,0 0 30px #00fff7;
+      animation:pulse 1.5s infinite ease-in-out;
+      margin-bottom:20px;z-index:2;
+    }
+    #loadingTitle{
+      font-size:1.8rem;color:#00fff7;margin-bottom:15px;
+      text-shadow:0 0 12px #00fff7,0 0 24px #00e6e6,0 0 40px #00b8ff;
+      z-index:2;
+    }
+    #loadingBarContainer{
+      width:60%;height:14px;background:rgba(255,255,255,0.1);
+      border-radius:10px;overflow:hidden;box-shadow:0 0 15px #00fff7;z-index:2;
+    }
+    #loadingBar{
+      width:0%;height:100%;background:#00fff7;
+      box-shadow:0 0 20px #00fff7;transition:width 0.2s;
+    }
+    #loadingPercent{
+      margin-top:12px;font-size:1.2rem;color:#fff;
+      text-shadow:0 0 6px #00fff7;z-index:2;
+    }
+
+    .particle{
+      position:absolute;width:6px;height:6px;background:#00fff7;
+      border-radius:50%;box-shadow:0 0 12px #00fff7,0 0 24px #00b8ff;
+      animation:moveParticle linear infinite;opacity:0.7;
+    }
+    @keyframes moveParticle{
+      0%{transform:translateY(0) translateX(0);opacity:0;}
+      50%{opacity:1;}
+      100%{transform:translateY(-100vh) translateX(30px);opacity:0;}
+    }
+
+    @keyframes bgMove{
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
+    }
+    @keyframes pulse{
+      0%,100%{transform:scale(1);}
+      50%{transform:scale(1.15);}
+    }
+
+    /* === BODY & TEMA === */
+    body{
+      background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+      background-size:400% 400%;
+      animation:bgMove 12s ease infinite;
+      color:#e0e0e0;overflow-x:hidden;position:relative;
+      opacity:0;transition:opacity 0.6s ease, background 0.6s ease,color 0.6s ease;
+    }
+    body.loaded{opacity:1;}
+
+    /* Light/Dark */
+    body.light{background:linear-gradient(#ffffff,#f2f2f2);color:#222;}
+    body.light h1,body.light h2,body.light h3{color:#ff4d6d;}
+    body.dark{background:#000;color:#f8f8f8;}
+    body.dark h1,body.dark h2,body.dark h3{color:#ff00ff;}
+
+    /* Pastel */
+    body.pastel{
+      background:linear-gradient(135deg,#ffdde1,#ffb3c1,#ffc8dd);
+      color:#4b2c3f;
+    }
+    body.pastel h1,body.pastel h2,body.pastel h3{
+      color:#ff4d6d;text-shadow:2px 2px 8px rgba(255,100,150,0.5);
+    }
+    .falling{
+      position:fixed;top:-50px;width:34px;height:34px;
+      background-size:contain;background-repeat:no-repeat;
+      animation:fall linear infinite;z-index:50;opacity:0.85;
+    }
+    @keyframes fall{0%{transform:translateY(-50px) rotate(0deg);}100%{transform:translateY(110vh) rotate(360deg);}}
+
+    /* HEADER */
+    header{
+      padding:1rem;background:rgba(10,10,30,0.7);
+      display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;
+      border-bottom:3px solid rgba(0,255,255,0.4);
+      box-shadow:0 0 20px #00fff7;backdrop-filter:blur(10px);
+      position:relative;z-index:5;transition:all 0.5s ease;
+    }
+    body.pastel header{background:rgba(255,192,203,0.8);border-bottom:4px solid #fff;box-shadow:0 4px 20px rgba(255,0,120,0.3);}
+
+    /* BUTTON */
+    .menu-btn,.music-btn,.next-btn,.prev-btn,.toggle-btn{
+      background:#ff4d6d;border:2px solid #fff;padding:10px 20px;border-radius:28px;
+      font-size:1rem;cursor:pointer;color:#fff;font-weight:bold;
+      transition:all 0.3s ease;box-shadow:0 0 12px rgba(255,77,109,0.8);
+    }
+    .menu-btn:hover,.music-btn:hover,.next-btn:hover,.prev-btn:hover,.toggle-btn:hover{
+      background:#ff6f91;transform:scale(1.08);
+    }
+
+    /* SECTION & CARD */
+    section{
+      padding:2.5rem;max-width:1200px;margin:auto;text-align:center;
+    }
+    section h2{font-size:2rem;margin-bottom:1.5rem;}
+    .content{
+      display:flex;flex-wrap:wrap;justify-content:center;gap:1.8rem;
+    }
+    .card{
+      flex:1 1 300px;max-width:340px;background:rgba(20,20,40,0.8);
+      border-radius:1.2rem;padding:1.2rem;text-align:center;
+      box-shadow:0 0 22px rgba(0,255,255,0.3);backdrop-filter:blur(6px);
+      border:1px solid rgba(0,255,255,0.4);transition:transform 0.4s ease;
+    }
+    .card img{
+      width:100%;max-height:260px;object-fit:cover;
+      border-radius:1rem;margin-bottom:0.8rem;
+    }
+    .card h3{font-size:1.5rem;}
+    .card p{font-size:1.1rem;line-height:1.6;}
+    body.pastel .card{background:rgba(255,255,255,0.85);box-shadow:0 8px 20px rgba(255,0,120,0.3);}
+  </style>
+</head>
+<body>
+  <!-- LOADING -->
+  <div id="loadingScreen">
+    <div id="loadingLogo">N</div>
+    <h1 id="loadingTitle">🎮 Loading Portfolio...</h1>
+    <div id="loadingBarContainer"><div id="loadingBar"></div></div>
+    <p id="loadingPercent">0%</p>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <h1>🎨 Nizam's Portfolio 🎮</h1>
+    <button class="menu-btn" onclick="window.location.href='payment.html'">💳 Payment</button>
+    <button class="menu-btn" onclick="window.location.href='sekola.html'">🏫 Sekolah</button>
+    <button class="menu-btn" onclick="window.location.href='mygirl.html'">💖 MyGirlFriend</button>
+    <button class="menu-btn" onclick="window.location.href='ai.html'">🤖 AI</button>
+    <button class="menu-btn" onclick="window.location.href='ddos.html'">💥 DDOS</button>
+    <button class="prev-btn" id="prevBtn">⏮ Prev</button>
+    <button class="music-btn" id="musicBtn">🎵 Play</button>
+    <button class="next-btn" id="nextBtn">⏭ Next</button>
+    <button class="toggle-btn" id="gamingToggle">🎮 Neon Mode</button>
+    <button class="toggle-btn" id="lightDarkToggle">🌙 Dark Mode</button>
+    <audio id="bgMusic" loop></audio>
+  </header>
+
+  <!-- ABOUT -->
+  <section>
+    <h2>About Me</h2>
+    <div class="content">
+      <div class="card">
+        <img src="https://files.catbox.moe/0hkdo9.jpg" />
+        <h3>Olaa, I’m Nizam 💥</h3>
+        <p>Olaa, my name is Nizam, I'm 14 years old and in 9th grade. Passionate in technology & design. 🥨</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section>
+    <h2>My Projects</h2>
+    <div class="content">
+      <div class="card">
+        <img src="https://files.catbox.moe/ffadzs.jpg" />
+        <h3>Money & Family 💰</h3>
+        <p>Aku ingin sukses supaya bisa membahagiakan orang tua. 🥨❤️</p>
+      </div>
+      <div class="card">
+        <img src="https://files.catbox.moe/qehydg.jpg" />
+        <h3>Mobile App Design</h3>
+        <p>Aplikasi mobile ringan dengan desain modern💥🥨.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section>
+    <h2>My Skills</h2>
+    <div class="content">
+      <div class="card">
+        <img src="https://files.catbox.moe/1ipq20.jpg" />
+        <h3>Frontend</h3>
+        <p>HTML, CSS, JavaScript</p>
+      </div>
+      <div class="card">
+        <img src="https://files.catbox.moe/ptvpiq.jpg" />
+        <h3>DDoS</h3>
+        <p>Simulasi serangan jaringan (edukasi keamanan website)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section>
+    <h2>My Products</h2>
+    <div class="content">
+      <div class="card">
+        <img src="https://files.catbox.moe/en7bbt.jpg" />
+        <h3>Membuat Website</h3>
+        <p>Template website modern dengan desain minimalis dan modern.</p>
+      </div>
+      <div class="card">
+        <img src="https://files.catbox.moe/zmeicd.jpg" />
+        <h3>Bug WA</h3>
+        <p>Mengirimkan bug WA untuk testing keamanan aplikasi.</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    /* === LOADING FIX === */
+    window.onload = () => {
+      const loadingBar = document.getElementById('loadingBar');
+      const loadingPercent = document.getElementById('loadingPercent');
+      const loadingScreen = document.getElementById('loadingScreen');
+
+      for (let i = 0; i < 25; i++) {
+        let p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random() * 100 + 'vw';
+        p.style.bottom = Math.random() * 100 + 'vh';
+        p.style.animationDuration = (5 + Math.random() * 5) + 's';
+        loadingScreen.appendChild(p);
+      }
+
+      let progress = 0;
+      const loadInterval = setInterval(() => {
+        progress += 2;
+        if (progress > 100) progress = 100;
+        loadingBar.style.width = progress + "%";
+        loadingPercent.textContent = progress + "%";
+
+        if (progress === 100) {
+          clearInterval(loadInterval);
+          setTimeout(() => {
+            loadingScreen.style.transition = "opacity 0.7s ease";
+            loadingScreen.style.opacity = "0";
+            setTimeout(() => {
+              loadingScreen.remove();
+              document.body.classList.add('loaded');
+            }, 700);
+          }, 500);
+        }
+      }, 70);
+    };
+
+    /* Musik */
+    const playlist = ["https://files.catbox.moe/1dt5po.mp3","https://files.catbox.moe/hprkl5.mp3","https://files.catbox.moe/wlkn8t.m4a","https://files.catbox.moe/gisjkw.mp3"];
+    let currentTrack = 0;
+    const music = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    let isPlaying = false;
+    function loadTrack(i){music.src=playlist[i];if(isPlaying) music.play();}
+    loadTrack(currentTrack);
+    musicBtn.addEventListener('click',()=>{if(!isPlaying){music.play();musicBtn.innerText="🎵 Stop";isPlaying=true;}else{music.pause();musicBtn.innerText="🎵 Play";isPlaying=false;}});
+    document.getElementById('nextBtn').onclick=()=>{currentTrack=(currentTrack+1)%playlist.length;loadTrack(currentTrack);};
+    document.getElementById('prevBtn').onclick=()=>{currentTrack=(currentTrack-1+playlist.length)%playlist.length;loadTrack(currentTrack);};
+
+    /* Pastel & Gaming Mode */
+    const gamingToggle = document.getElementById('gamingToggle');
+    let isPastel = false;
+    const icons = ["https://cdn-icons-png.flaticon.com/512/833/833472.png","https://cdn-icons-png.flaticon.com/512/1752/1752892.png","https://cdn-icons-png.flaticon.com/512/1752/1752888.png"];
+    let fallInterval;
+    function spawnFalling(){clearInterval(fallInterval);fallInterval=setInterval(()=>{let f=document.createElement('div');f.className='falling';f.style.left=Math.random()*100+'vw';f.style.animationDuration=(5+Math.random()*5)+'s';f.style.backgroundImage=`url(${icons[Math.floor(Math.random()*icons.length)]})`;document.body.appendChild(f);setTimeout(()=>f.remove(),10000);},400);}
+    function clearFalling(){clearInterval(fallInterval);document.querySelectorAll('.falling').forEach(e=>e.remove());}
+    gamingToggle.addEventListener('click',()=>{isPastel=!isPastel;if(isPastel){document.body.classList.add('pastel');gamingToggle.textContent="💖 Pastel Mode";spawnFalling();}else{document.body.classList.remove('pastel');gamingToggle.textContent="🎮 Neon Mode";clearFalling();}});
+
+    /* Light/Dark */
+    const lightDarkToggle=document.getElementById('lightDarkToggle');
+    let isLight=false;
+    lightDarkToggle.addEventListener('click',()=>{isLight=!isLight;if(isLight){document.body.classList.remove('dark');document.body.classList.add('light');lightDarkToggle.textContent="☀️ Light Mode";}else{document.body.classList.remove('light');document.body.classList.add('dark');lightDarkToggle.textContent="🌙 Dark Mode";}});
+  </script>
+</body>
+</html>
