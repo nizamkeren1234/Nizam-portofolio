@@ -1,261 +1,486 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My GirlFriend</title>
-  <style>
-    * {margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif;}
-    body {
-      background:linear-gradient(#ffdde1, #ee9ca7);
-      color:#fff;
-      overflow-x:hidden;
-      min-height:100vh;
-      position:relative;
-    }
-    header {
-      padding:1.2rem;
-      background:#ff4d6d;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:12px;
-      flex-wrap:wrap;
-      border-bottom:5px solid #fff;
-      box-shadow:0 5px 0 #c9184a;
-      position:relative;
-      z-index:10;
-    }
-    header h1 {
-      font-size:2rem;
-      color:#fff;
-      text-shadow:2px 2px 4px rgba(0,0,0,0.3);
-    }
-    .back-btn {
-      background:#ff758f;
-      border:3px solid #fff;
-      padding:10px 18px;
-      border-radius:25px;
-      color:#fff;
-      font-weight:bold;
-      cursor:pointer;
-      transition:all 0.3s ease;
-      box-shadow:0 4px 0 #c9184a;
-    }
-    .back-btn:hover {
-      background:#ffb3c1;
-      transform:translateY(-3px);
-    }
-    .container {
-      max-width:1100px;
-      margin:4rem auto;
-      text-align:center;
-      padding:1rem;
-    }
-    h2 {
-      font-size:2.2rem;
-      margin-bottom:1rem;
-      color:#fff;
-      text-shadow:2px 2px 6px rgba(0,0,0,0.4);
-    }
-    p {
-      font-size:1.2rem;
-      line-height:1.7;
-      color:#fff;
-      text-shadow:1px 1px 3px rgba(0,0,0,0.3);
-    }
-    /* Grid 10 Slot */
-    .cards {
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
-      gap:1.2rem;
-      margin-top:2rem;
-    }
-    .card {
-      background:rgba(255,255,255,0.2);
-      border:3px solid #fff;
-      border-radius:1rem;
-      padding:1rem;
-      text-align:center;
-      box-shadow:0 6px 12px rgba(0,0,0,0.3);
-      backdrop-filter:blur(6px);
-    }
-    .card img {
-      width:100%;
-      max-width:300px;
-      border-radius:1rem;
-      border:3px solid #fff;
-      box-shadow:0 4px 10px rgba(0,0,0,0.4);
-    }
-    .card h3 {
-      margin-top:1rem;
-      font-size:1.2rem;
-      color:#fff;
-    }
-    .music-btn {
-      margin-top:1.5rem;
-      background:#ff758f;
-      border:3px solid #fff;
-      padding:10px 20px;
-      border-radius:25px;
-      color:#fff;
-      font-weight:bold;
-      cursor:pointer;
-      transition:all 0.3s ease;
-      box-shadow:0 4px 0 #c9184a;
-    }
-    .music-btn:hover {
-      background:#ffb3c1;
-      transform:translateY(-3px);
-    }
-    .heart {
-      position:absolute;
-      top:-50px;
-      color:#ff4d6d;
-      font-size:2rem;
-      animation:fall 7s linear infinite;
-      opacity:0.8;
-      z-index:0;
-    }
-    @keyframes fall {
-      0% {transform:translateY(0) rotate(0deg); opacity:1;}
-      100% {transform:translateY(110vh) rotate(360deg); opacity:0;}
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Space Blaster — Nizam (Auto Shoot)</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg1:#020817; --panel:rgba(255,255,255,0.03); --accent:#00f6ff;
+    --danger:#ff6b6b;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,Helvetica;}
+  body{
+    background: radial-gradient(circle at 10% 10%, #021026 0%, #000 60%);
+    color:#e6f6ff; -webkit-font-smoothing:antialiased;
+    display:flex;align-items:center;justify-content:center;padding:12px;
+  }
+
+  /* Game frame */
+  .game-wrap{
+    width:100%;max-width:1100px;border-radius:14px;overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,0.7), 0 6px 18px rgba(0,0,0,0.6);
+    border:1px solid rgba(0,255,255,0.06);
+    background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.5));
+    position:relative;
+  }
+
+  canvas{
+    display:block;width:100%;height:640px;background:linear-gradient(#04102b,#000);
+  }
+
+  /* Top UI */
+  .top-ui{
+    position:absolute;left:18px;top:14px;z-index:20;display:flex;gap:14px;align-items:center;
+    background:rgba(0,0,0,0.45);padding:8px 12px;border-radius:10px;
+    backdrop-filter:blur(6px);
+  }
+  .top-ui .stat{font-family:'Press Start 2P',monospace;font-size:12px;color:#cfefff;}
+  .controls-right{position:absolute;right:18px;top:14px;display:flex;gap:8px;align-items:center}
+
+  /* Bottom controls (touch) */
+  .touch-controls{
+    position:absolute;left:50%;transform:translateX(-50%);bottom:18px;z-index:20;display:flex;gap:18px;
+    pointer-events:auto;
+  }
+  .ctrl-btn{
+    width:84px;height:84px;border-radius:999px;border:0;
+    background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+    color:var(--accent);font-size:28px;font-weight:700;
+    display:grid;place-items:center;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,0.6);
+  }
+  .ctrl-btn:active{transform:translateY(2px)}
+
+  /* Game over popup */
+  .popup{
+    position:absolute;inset:0;display:grid;place-items:center;z-index:40;pointer-events:none;
+    opacity:0;transition:opacity .28s ease;
+  }
+  .popup.show{opacity:1;pointer-events:auto}
+  .modal{
+    background:linear-gradient(180deg, rgba(10,20,30,0.94), rgba(0,0,0,0.8));
+    border-radius:12px;padding:20px 26px;text-align:center;border:1px solid rgba(0,255,255,0.06);
+    box-shadow: 0 18px 50px rgba(2,6,23,0.6);
+    color:#e6fbff;max-width:520px;
+  }
+  .modal h2{font-family:'Press Start 2P',monospace;font-size:18px;margin-bottom:10px}
+  .modal p{margin:8px 0 16px;color:#bfefff}
+  .btn{
+    background:var(--accent);color:#001;padding:10px 14px;border-radius:10px;border:0;cursor:pointer;margin:6px;
+    font-weight:700;
+  }
+
+  /* small helper */
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  @media (max-width:640px){
+    canvas{height:520px}
+    .ctrl-btn{width:68px;height:68px}
+  }
+</style>
 </head>
 <body>
-  <header>
-    <h1>💖 My GirlFriend 💖</h1>
-    <button class="back-btn" onclick="window.location.href='index.html'">⬅ Back</button>
-  </header>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My GirlFriend</title>
-  <style>
-    * {margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif;}
-    body {
-      background:linear-gradient(#ffdde1, #ee9ca7);
-      color:#fff;
-      overflow-x:hidden;
-      min-height:100vh;
-      position:relative;
+  <div class="game-wrap" id="gameWrap">
+    <canvas id="gameCanvas" aria-label="Space Blaster game"></canvas>
+
+    <div class="top-ui" role="status" aria-live="polite">
+      <div class="stat">Score: <span id="uiScore">0</span></div>
+      <div class="stat">Lives: <span id="uiLives">3</span></div>
+      <div class="stat">Level: <span id="uiLevel">1</span></div>
+    </div>
+
+    <div class="controls-right">
+      <button id="playPauseMusic" class="ctrl-btn" title="Play / Pause Music" style="width:auto;height:auto;padding:8px 12px;font-size:16px">♪</button>
+      <button id="pauseBtn" class="ctrl-btn" title="Pause Game" style="width:auto;height:auto;padding:8px 12px;font-size:16px">II</button>
+    </div>
+
+    <!-- Touch/Screen controls -->
+    <div class="touch-controls" aria-hidden="false">
+      <button id="leftBtn" class="ctrl-btn" aria-label="Left">◀</button>
+      <button id="rightBtn" class="ctrl-btn" aria-label="Right">▶</button>
+    </div>
+
+    <!-- Popup -->
+    <div class="popup" id="popup">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <h2 id="modalTitle">—</h2>
+        <p id="modalText"></p>
+        <div>
+          <button class="btn" id="restartBtn">Main Lagi</button>
+          <button class="btn" id="backBtn">Kembali ke Menu</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Audio (change "lagu.mp3" ke nama file musikmu) -->
+    <audio id="bgm" preload="auto" loop></audio>
+    <audio id="sfxExplode" preload="auto" src="https://files.catbox.moe/1yq8dr.mp3"></audio>
+    <audio id="sfxHit" preload="auto" src="https://files.catbox.moe/3v5uzj.mp3"></audio>
+  </div>
+
+<script>
+/* =============================
+   Space Blaster (single file)
+   - Auto-shoot
+   - Keyboard + touch left/right
+   - Score unlimited
+   - Particles + explosion SFX
+   - Music (set `bgm.src = "lagu.mp3"`)
+   ============================= */
+
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+const wrap = document.getElementById('gameWrap');
+
+function fitCanvas(){
+  // keep aspect and fit container width
+  canvas.width = Math.min(1200, wrap.clientWidth);
+  canvas.height = (canvas.width * 9/16) | 0; // 16:9-ish
+  if (canvas.height < 420) canvas.height = 520;
+}
+window.addEventListener('resize', fitCanvas);
+fitCanvas();
+
+/* ---------- Game state ---------- */
+let score = 0, lives = 3, level = 1;
+let running = true, paused = false;
+let bullets = [], enemies = [], particles = [];
+let lastTs = performance.now();
+let shootCooldown = 0;
+const shootInterval = 250; // ms
+let enemySpawnTimer = 0;
+const enemySpawnBase = 900; // ms
+
+/* ---------- Audio ---------- */
+const bgm = document.getElementById('bgm');
+bgm.src = "lagu.mp3"; // <-- ganti nama file musikmu di sini (atau url)
+bgm.volume = 0.45;
+
+const sfxExplode = document.getElementById('sfxExplode');
+const sfxHit = document.getElementById('sfxHit');
+
+document.getElementById('playPauseMusic').addEventListener('click', ()=>{
+  if (bgm.paused) bgm.play().catch(()=>{}); else bgm.pause();
+});
+
+/* ---------- Player ---------- */
+const player = {
+  x: canvas.width/2,
+  y: canvas.height - 84,
+  w: 56,
+  h: 22,
+  speed: 360,
+  cooldown: 0
+};
+
+/* ---------- Input ---------- */
+const input = { left:false, right:false };
+window.addEventListener('keydown', e=>{
+  if (e.key === 'ArrowLeft' || e.key === 'a') input.left = true;
+  if (e.key === 'ArrowRight' || e.key === 'd') input.right = true;
+  if (e.key === 'p') togglePause();
+});
+window.addEventListener('keyup', e=>{
+  if (e.key === 'ArrowLeft' || e.key === 'a') input.left = false;
+  if (e.key === 'ArrowRight' || e.key === 'd') input.right = false;
+});
+
+/* touch buttons */
+document.getElementById('leftBtn').addEventListener('touchstart', (e)=>{ e.preventDefault(); input.left=true });
+document.getElementById('leftBtn').addEventListener('touchend', (e)=>{ e.preventDefault(); input.left=false });
+document.getElementById('rightBtn').addEventListener('touchstart', (e)=>{ e.preventDefault(); input.right=true });
+document.getElementById('rightBtn').addEventListener('touchend', (e)=>{ e.preventDefault(); input.right=false });
+// mouse alternative
+document.getElementById('leftBtn').addEventListener('mousedown', ()=> input.left=true);
+document.getElementById('leftBtn').addEventListener('mouseup', ()=> input.left=false);
+document.getElementById('rightBtn').addEventListener('mousedown', ()=> input.right=true);
+document.getElementById('rightBtn').addEventListener('mouseup', ()=> input.right=false);
+
+/* Pause button */
+document.getElementById('pauseBtn').addEventListener('click', ()=> togglePause());
+
+/* popup buttons */
+document.getElementById('restartBtn').addEventListener('click', ()=> {
+  hidePopup(); startNewGame();
+});
+document.getElementById('backBtn').addEventListener('click', ()=> {
+  location.href = 'index.html';
+});
+
+/* ---------- Helpers ---------- */
+function rand(a,b){ return Math.random()*(b-a)+a; }
+function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
+
+/* ---------- Spawn enemy ---------- */
+function spawnEnemy(){
+  const type = Math.random() < 0.12 ? 'big' : 'normal';
+  enemies.push({
+    x: rand(40, canvas.width - 40),
+    y: -40,
+    vx: rand(-0.6, 0.6),
+    vy: rand(1.2, 2.2) + (level-1)*0.12,
+    hp: type === 'big' ? 3 : 1,
+    size: type === 'big' ? 36 : 22,
+    type
+  });
+}
+
+/* ---------- Particles ---------- */
+function spawnParticles(x,y,color,count=10){
+  for(let i=0;i<count;i++){
+    particles.push({
+      x, y,
+      vx: rand(-3,3),
+      vy: rand(-4,1),
+      life: rand(350,700),
+      ttl: 0,
+      size: rand(2,6),
+      color
+    });
+  }
+}
+
+/* ---------- Game loop ---------- */
+function updateFrame(ts){
+  if (!running) return;
+  const dt = Math.min((ts - lastTs) / 1000, 0.035);
+  lastTs = ts;
+
+  if (!paused){
+    // update player
+    if (input.left) player.x -= player.speed * dt;
+    if (input.right) player.x += player.speed * dt;
+    player.x = clamp(player.x, player.w/2, canvas.width - player.w/2);
+
+    // auto-shoot (cooldown)
+    shootCooldown -= dt*1000;
+    if (shootCooldown <= 0){
+      shootCooldown = shootInterval;
+      bullets.push({ x: player.x, y: player.y - 10, vy: -8, r: 4 });
     }
-    header {
-      padding:1.2rem;
-      background:#ff4d6d;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:12px;
-      flex-wrap:wrap;
-      border-bottom:5px solid #fff;
-      box-shadow:0 5px 0 #c9184a;
-      position:relative;
-      z-index:10;
+
+    // bullets
+    for (let i = bullets.length-1; i >= 0; i--){
+      bullets[i].y += bullets[i].vy;
+      if (bullets[i].y < -20) bullets.splice(i,1);
     }
-    header h1 {
-      font-size:2rem;
-      color:#fff;
-      text-shadow:2px 2px 4px rgba(0,0,0,0.3);
+
+    // spawn enemies by timer (faster with level)
+    enemySpawnTimer += dt*1000;
+    const spawnEvery = Math.max(380, enemySpawnBase - (level-1)*40);
+    if (enemySpawnTimer > spawnEvery){
+      enemySpawnTimer = 0;
+      spawnEnemy();
     }
-    .back-btn {
-      background:#ff758f;
-      border:3px solid #fff;
-      padding:10px 18px;
-      border-radius:25px;
-      color:#fff;
-      font-weight:bold;
-      cursor:pointer;
-      transition:all 0.3s ease;
-      box-shadow:0 4px 0 #c9184a;
+
+    // update enemies
+    for (let ei = enemies.length-1; ei >= 0; ei--){
+      const e = enemies[ei];
+      e.x += e.vx;
+      e.y += e.vy;
+      // bounce sides
+      if (e.x < 20 || e.x > canvas.width - 20) e.vx *= -1;
+
+      // hit by bullet?
+      for (let bi = bullets.length-1; bi >= 0; bi--){
+        const b = bullets[bi];
+        const dx = b.x - e.x;
+        const dy = b.y - e.y;
+        if (Math.sqrt(dx*dx + dy*dy) < e.size){
+          // hit
+          bullets.splice(bi,1);
+          e.hp--;
+          sfxHit.currentTime = 0; sfxHit.play().catch(()=>{});
+          spawnParticles(b.x, b.y, '#fff6a1', 6);
+          if (e.hp <= 0){
+            // enemy destroyed
+            enemies.splice(ei,1);
+            score += (e.type === 'big' ? 30 : 10) * level;
+            document.getElementById('uiScore').textContent = score;
+            sfxExplode.currentTime = 0; sfxExplode.play().catch(()=>{});
+            spawnParticles(e.x, e.y, e.type === 'big' ? '#ffb86b' : '#ff7b7b', 14);
+            // small chance to gain life
+            if (Math.random() < 0.03) { lives = Math.min(9, lives + 1); document.getElementById('uiLives').textContent = lives; }
+            // level progression (soft)
+            if (score > level * 300) { level++; document.getElementById('uiLevel').textContent = level; }
+          }
+          break;
+        }
+      }
+
+      // enemy reached bottom -> damage player
+      if (e.y > canvas.height + 60){
+        enemies.splice(ei,1);
+        lives--;
+        document.getElementById('uiLives').textContent = lives;
+        spawnParticles(e.x, canvas.height - 80, '#ff9a9a', 10);
+        if (lives <= 0) {
+          endGame(false);
+          break;
+        }
+      }
+
+      // collision with player (direct hit)
+      if (Math.abs(e.x - player.x) < (e.size + player.w/2) && Math.abs(e.y - player.y) < (e.size + player.h/2)){
+        endGame(false);
+        return;
+      }
     }
-    .back-btn:hover {
-      background:#ffb3c1;
-      transform:translateY(-3px);
+
+    // update particles
+    for (let i = particles.length - 1; i >= 0; i--){
+      const p = particles[i];
+      p.vy += 0.06;
+      p.x += p.vx;
+      p.y += p.vy;
+      p.ttl += dt*1000;
+      if (p.ttl > p.life) particles.splice(i,1);
     }
-    .container {
-      max-width:1100px;
-      margin:4rem auto;
-      text-align:center;
-      padding:1rem;
+
+    // optional win condition (very high score) — but score is unlimited, so this is optional
+    if (score >= 3000 && !gameOverShown){
+      endGame(true);
+      return;
     }
-    h2 {
-      font-size:2.2rem;
-      margin-bottom:1rem;
-      color:#fff;
-      text-shadow:2px 2px 6px rgba(0,0,0,0.4);
-    }
-    p {
-      font-size:1.2rem;
-      line-height:1.7;
-      color:#fff;
-      text-shadow:1px 1px 3px rgba(0,0,0,0.3);
-    }
-    /* Grid 10 Slot */
-    .cards {
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
-      gap:1.2rem;
-      margin-top:2rem;
-    }
-    .card {
-      background:rgba(255,255,255,0.2);
-      border:3px solid #fff;
-      border-radius:1rem;
-      padding:1rem;
-      text-align:center;
-      box-shadow:0 6px 12px rgba(0,0,0,0.3);
-      backdrop-filter:blur(6px);
-    }
-    .card img {
-      width:100%;
-      max-width:300px;
-      border-radius:1rem;
-      border:3px solid #fff;
-      box-shadow:0 4px 10px rgba(0,0,0,0.4);
-    }
-    .card h3 {
-      margin-top:1rem;
-      font-size:1.2rem;
-      color:#fff;
-    }
-    .music-btn {
-      margin-top:1.5rem;
-      background:#ff758f;
-      border:3px solid #fff;
-      padding:10px 20px;
-      border-radius:25px;
-      color:#fff;
-      font-weight:bold;
-      cursor:pointer;
-      transition:all 0.3s ease;
-      box-shadow:0 4px 0 #c9184a;
-    }
-    .music-btn:hover {
-      background:#ffb3c1;
-      transform:translateY(-3px);
-    }
-    .heart {
-      position:absolute;
-      top:-50px;
-      color:#ff4d6d;
-      font-size:2rem;
-      animation:fall 7s linear infinite;
-      opacity:0.8;
-      z-index:0;
-    }
-    @keyframes fall {
-      0% {transform:translateY(0) rotate(0deg); opacity:1;}
-      100% {transform:translateY(110vh) rotate(360deg); opacity:0;}
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>💖 My GirlFriend 💖</h1>
-    <button class="back-btn" onclick="window.location.href='index.html'">⬅ Back</button>
-  </header>
- <h2>Comming soon</h2>
+  }
+
+  // render
+  render();
+
+  requestAnimationFrame(updateFrame);
+}
+
+/* ---------- Render ---------- */
+function render(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  // subtle stars
+  for (let i=0;i<45;i++){
+    const x = (i * 73) % canvas.width;
+    const y = (i * 131) % canvas.height;
+    ctx.fillStyle = 'rgba(255,255,255,0.02)';
+    ctx.fillRect((x + (performance.now()/30) % canvas.width)|0, (y + (performance.now()/20) % canvas.height)|0, 2, 2);
+  }
+
+  // draw player
+  ctx.save();
+  ctx.translate(player.x, player.y);
+  ctx.fillStyle = '#00f6ff';
+  ctx.beginPath();
+  ctx.moveTo(0, -12);
+  ctx.lineTo(-player.w/2, player.h/2);
+  ctx.lineTo(player.w/2, player.h/2);
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+
+  // bullets
+  ctx.fillStyle = '#ffd85c';
+  bullets.forEach(b => {
+    ctx.fillRect(b.x - 2, b.y, 4, 10);
+  });
+
+  // enemies
+  enemies.forEach(e => {
+    ctx.beginPath();
+    ctx.fillStyle = e.type === 'big' ? '#ff9a6b' : '#ff7b7b';
+    ctx.arc(e.x, e.y, e.size, 0, Math.PI*2);
+    ctx.fill();
+    // hp text
+    ctx.fillStyle = '#111';
+    ctx.font = '12px Inter, monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText(e.hp, e.x, e.y + 4);
+  });
+
+  // particles
+  particles.forEach(p => {
+    ctx.globalAlpha = 1 - (p.ttl / p.life);
+    ctx.fillStyle = p.color || '#fff';
+    ctx.fillRect(p.x, p.y, p.size, p.size);
+    ctx.globalAlpha = 1;
+  });
+
+  // overlay small HUD is handled by DOM (ui elements)
+}
+
+/* ---------- Game control / end ---------- */
+let popup = document.getElementById('popup');
+let modalTitle = document.getElementById('modalTitle');
+let modalText = document.getElementById('modalText');
+let gameOverShown = false;
+
+function endGame(win){
+  running = false;
+  paused = true;
+  gameOverShown = true;
+  bgm.pause();
+  modalTitle.textContent = win ? '🏆 KAMU MENANG!' : '💥 GAME OVER';
+  modalText.innerHTML = win ? `Skor Akhir: ${score}` : `Skor Akhir: ${score}<br>Jangan menyerah, coba lagi!`;
+  popup.classList.add('show');
+  document.getElementById('uiScore').textContent = score;
+}
+
+function hidePopup(){
+  popup.classList.remove('show');
+}
+
+function startNewGame(){
+  // reset state
+  score = 0; lives = 3; level = 1;
+  bullets = []; enemies = []; particles = [];
+  player.x = canvas.width/2;
+  running = true; paused = false; gameOverShown = false;
+  document.getElementById('uiScore').textContent = score;
+  document.getElementById('uiLives').textContent = lives;
+  document.getElementById('uiLevel').textContent = level;
+  popup.classList.remove('show');
+  bgm.play().catch(()=>{});
+  lastTs = performance.now();
+  requestAnimationFrame(updateFrame);
+}
+
+/* ---------- Pause toggle ---------- */
+function togglePause(){
+  paused = !paused;
+  document.getElementById('pauseBtn').textContent = paused ? '▶' : 'II';
+  if (!paused) {
+    lastTs = performance.now();
+    requestAnimationFrame(updateFrame);
+  }
+}
+
+/* ---------- Start ---------- */
+document.getElementById('uiScore').textContent = score;
+document.getElementById('uiLives').textContent = lives;
+document.getElementById('uiLevel').textContent = level;
+
+/* resume / start music only after user gesture in some browsers */
+document.addEventListener('click', function _startOnce(){
+  // play slight preview then pause so user gesture allows audio later
+  bgm.play().then(()=>bgm.pause()).catch(()=>{});
+  document.removeEventListener('click', _startOnce);
+}, { once: true });
+
+/* start loop */
+lastTs = performance.now();
+requestAnimationFrame(updateFrame);
+
+/* ensure canvas sizes and re-position player after sizing */
+window.addEventListener('resize', ()=>{
+  fitCanvas();
+  player.x = clamp(player.x, player.w/2, canvas.width - player.w/2);
+});
+
+/* expose restart for console if needed */
+window.restartGame = startNewGame;
+
+/* optional: click canvas to toggle music/play */
+canvas.addEventListener('dblclick', ()=> {
+  if (bgm.paused) bgm.play().catch(()=>{}); else bgm.pause();
+});
+
+</script>
+</body>
+</html>
